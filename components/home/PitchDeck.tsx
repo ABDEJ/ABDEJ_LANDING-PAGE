@@ -1,0 +1,25 @@
+export default function PitchDeckCTA() {
+  return (
+    <section className="bg-dark pb-14 sm:pb-16 lg:pb-20">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[20px] bg-secondary px-5 py-8 sm:rounded-[24px] sm:px-8 sm:py-10 md:px-12 lg:rounded-[28px]">
+          <div className="mx-auto max-w-2xl text-left">
+            <h3 className="text-2xl font-bold text-dark sm:text-[28px] md:text-3xl">
+              Our Firm's Pitch-Deck
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-dark/80 sm:text-base sm:leading-7">
+              Providing end-to-end power and engineering solutions that enhance
+              efficiency, reduce downtime, and ensure reliable operations for
+              businesses.
+            </p>
+
+            <button className="mt-6 h-[56px] w-full rounded-[30px] bg-white text-dark font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[240px] md:h-[64px] md:w-[290px]">
+              Download Pitchdeck
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
