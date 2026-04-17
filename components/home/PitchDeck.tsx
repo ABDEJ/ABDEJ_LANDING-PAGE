@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 export default function PitchDeckCTA() {
   return (
     <section className="bg-dark pb-14 sm:pb-16 lg:pb-20">
@@ -14,8 +17,18 @@ export default function PitchDeckCTA() {
               businesses.
             </p>
 
-            <button className="mt-6 h-[56px] w-full rounded-[30px] bg-white text-dark font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[240px] md:h-[64px] md:w-[290px]">
-              Download Pitchdeck
+            <button className=" flex items-center gap-2 justify-center mt-6 h-[56px] w-full rounded-[30px] bg-white text-dark font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[240px] md:h-[64px] md:w-[290px]">
+               <span className="flex items-center gap-2">
+                   Download Pitchdeck
+                   <Image
+                     src="/DownloadIcon.svg"
+                     width={20}
+                     height={20}
+                     alt="Download"
+                     className="block"
+                   />
+                 </span>
+
             </button>
           </div>
         </div>

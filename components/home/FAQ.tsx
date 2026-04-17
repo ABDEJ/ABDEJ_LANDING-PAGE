@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import SectionHeader from "../SectionHeader";
-
+import AnimatedSection from "../Animations";
 
 const faqs = [
   {
@@ -42,53 +42,58 @@ export default function FAQs() {
 
   return (
     <section className="bg-dark py-20">
-  <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    
-   
-  <div className="mb-6 flex justify-center">
-  <div className="h-[2px] w-[711px] bg-secondary mb-4" />
-</div>
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <AnimatedSection direction="up">
+          <div className="mb-6 flex justify-center">
+            <div className="mb-4 h-[2px] w-full max-w-[711px] bg-secondary" />
+          </div>
+        </AnimatedSection>
 
-    <div className="flex justify-center mt-4 text-center">
-  <SectionHeader
-    title="FAQs"
-    subtitle="Have questions? Find answers to frequently asked questions about us."
-  />
-</div>
+        <AnimatedSection direction="up" delay={0.1}>
+          <div className="mt-4 flex justify-center text-center">
+            <SectionHeader
+              title="FAQs"
+              subtitle="Have questions? Find answers to frequently asked questions about us."
+            />
+          </div>
+        </AnimatedSection>
 
         <div className="mt-12 space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div
+              <AnimatedSection
                 key={index}
-                className="rounded-2xl border border-white/10 bg-transparent"
+                direction="up"
+                delay={0.15 + index * 0.08}
               >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
-                >
-                  <span className="text-base font-medium text-white">
-                    {faq.question}
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${
-                      isOpen
-                        ? "bg-[#F4C430] text-[#111111]"
-                        : "bg-white text-[#111111]"
-                    }`}
+                <div className="rounded-2xl border border-white/10 bg-transparent">
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
                   >
-                    {isOpen ? "−" : "+"}
-                  </span>
-                </button>
+                    <span className="text-base font-medium text-white">
+                      {faq.question}
+                    </span>
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${
+                        isOpen
+                          ? "bg-[#F4C430] text-[#111111]"
+                          : "bg-white text-[#111111]"
+                      }`}
+                    >
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
 
-                {isOpen && (
-                  <div className="px-5 pb-5 text-sm leading-7 text-white/70">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-sm leading-7 text-white/70">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              </AnimatedSection>
             );
           })}
         </div>

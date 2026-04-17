@@ -1,22 +1,39 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-interface Props {
+type AnimatedSectionProps = {
   children: ReactNode;
-  className?: string;
   delay?: number;
-}
+  direction?: "up" | "left" | "right";
+  className?: string;
+};
 
-export default function AnimatedSection({ children, className = '', delay = 0 }: Props) {
+export default function AnimatedSection({
+  children,
+  delay = 0,
+  direction = "up",
+  className = "",
+}: AnimatedSectionProps) {
+  const getInitial = () => {
+    switch (direction) {
+      case "left":
+        return { opacity: 0, x: -60 };
+      case "right":
+        return { opacity: 0, x: 60 };
+      default:
+        return { opacity: 0, y: 40 };
+    }
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }} 
-      transition={{ duration: 0.6, delay, ease: [0.4, 0, 0.2, 1] }}
       className={className}
+      initial={getInitial()}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: false, amount: 0.25 }}
+      transition={{ duration: 0.7, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>
