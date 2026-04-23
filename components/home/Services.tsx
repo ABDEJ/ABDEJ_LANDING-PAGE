@@ -35,12 +35,12 @@ const partners = [
   { name: "Gt bank", logo: "/OurPartners/gtbank.svg" },
   { name: "Zenith bank", logo: "/OurPartners/zenithbank.svg" },
   { name: "Nigerian Stock Exchange", logo: "/OurPartners/nse.svg" },
-  { name: "Jeruzeth International Limited", logo: "/partners/hitachi.svg" },
-  { name: "Federal Palace Hotel", logo: "/partners/jcb.svg" },
-  { name: "Poly product", logo: "/partners/samsung.svg" },
-  { name: "Esorae", logo: "/partners/samsung.svg" },
-  { name: "Viathan Nigeria Limited", logo: "/partners/samsung.svg" },
-  { name: "Cappa & D'Alberto Nigeria Limited", logo: "/partners/samsung.svg" },
+  // { name: "Jeruzeth International Limited", logo: "/partners/hitachi.svg" },
+  // { name: "Federal Palace Hotel", logo: "/partners/jcb.svg" },
+  { name: "Poly product", logo: "/OurPartners/polygroup.svg" },
+  // { name: "Esorae", logo: "/partners/samsung.svg" },
+  { name: "Viathan Nigeria Limited", logo: "/Ourpartners/viathan.svg" },
+  { name: "Cappa & D'Alberto Nigeria Limited", logo: "/OurPartners/Cappa.svg" },
 ];
 
 export default function CoreServices() {
@@ -48,6 +48,7 @@ export default function CoreServices() {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const isManualScrolling = useRef(false);
   const manualScrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const tabsContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const sectionIds = [...new Set(tabs.map((tab) => tab.id))];
@@ -86,17 +87,21 @@ export default function CoreServices() {
     };
   }, []);
 
-  useEffect(() => {
-    const activeButton = tabRefs.current[activeTab];
+useEffect(() => {
+  const activeButton = tabRefs.current[activeTab];
+  const container = tabsContainerRef.current;
 
-    if (activeButton) {
-      activeButton.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  }, [activeTab]);
+  if (!activeButton || !container) return;
+
+  const buttonLeft = activeButton.offsetLeft;
+  const buttonWidth = activeButton.offsetWidth;
+  const containerWidth = container.offsetWidth;
+
+  container.scrollTo({
+    left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
+    behavior: "smooth",
+  });
+}, [activeTab]);
 
   const handleTabClick = (id: string) => {
     const section = document.getElementById(id);
@@ -120,7 +125,7 @@ export default function CoreServices() {
 
     manualScrollTimeout.current = setTimeout(() => {
       isManualScrolling.current = false;
-    }, 1200);
+    }, 1500);
   };
 
   return (
@@ -132,7 +137,10 @@ export default function CoreServices() {
         <AnimatedSection>
           <div className="mb-12 flex justify-center">
             <div className="no-scrollbar w-full overflow-x-auto">
-              <div className="mx-auto flex w-max min-w-full flex-nowrap gap-2 rounded-full bg-black/40 p-2 backdrop-blur-md md:w-fit md:min-w-0 md:justify-center">
+             <div
+  ref={tabsContainerRef}
+  className="mx-auto flex w-max min-w-full flex-nowrap gap-2 rounded-full bg-black/40 p-2 backdrop-blur-md md:w-fit md:min-w-0 md:justify-center"
+>
                 {tabs.map((tab) => {
                   const isActive = activeTab === tab.id;
 

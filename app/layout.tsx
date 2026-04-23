@@ -9,25 +9,40 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: 'Your Company Name',
-  description: 'High-converting landing page for your business',
-  keywords: ['landing page', 'your niche', 'your service'],
+  title: "Generator Maintenance & Power Solutions Company in Lagos | ABDEJ Power Solutions",
+
+  description:
+    "ABDEJ Power Solutions offers professional generator maintenance, diesel generator repairs, power system installation, and custom metal fabrication services in Lagos, Nigeria. Reliable, efficient, and affordable energy solutions for homes and businesses.",
+
+  keywords: [
+    "generator maintenance Lagos",
+    "diesel generator repair Nigeria",
+    "power solutions company Lagos",
+    "generator installation services",
+    "industrial generator servicing",
+    "custom metal fabrication Nigeria",
+    "power system design and installation",
+    "generator repair near me",
+  ],
+
   openGraph: {
-    title: 'Your Company Name',
-    description: 'High-converting landing page',
-    url: 'https://yourdomain.com',
-    siteName: 'Your Company',
+    title: "Reliable Generator & Power Solutions in Lagos | ABDEJ",
+    description:
+      "Expert generator repairs, power system installation, and custom fabrication services. Trusted by homes and businesses across Lagos.",
+    url: "https://yourdomain.com",
+    siteName: "ABDEJ Power Solutions",
     images: [
       {
-        url: '/og-image.png',
+        url: "/logo.svg",
         width: 1200,
         height: 630,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_NG",
+    type: "website",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{

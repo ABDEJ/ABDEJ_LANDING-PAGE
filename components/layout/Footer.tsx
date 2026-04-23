@@ -35,7 +35,7 @@ const accountLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#14181C] text-white">
+    <footer className="bg-dark text-white">
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 md:px-10 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.25fr_3fr]">
           {/* Left brand block */}

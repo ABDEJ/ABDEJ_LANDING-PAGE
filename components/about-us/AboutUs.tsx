@@ -108,7 +108,7 @@ function SectionHeading({ title }: { title: string }) {
         alt="Gear Icon"
         width={65}
         height={65}
-        className="-mr-8"
+        className="-mr-1"
       />
       <h2 className="text-lg font-semibold text-primary sm:text-xl md:text-2xl">
         {title}
@@ -191,7 +191,7 @@ function AcronymCard({
 
 export default function AboutSection() {
   return (
-    <section className="overflow-hidden bg-[#1A1D20]">
+    <section className="overflow-hidden bg-dark">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <AnimatedSection>
           <div className="mb-16">

@@ -14,7 +14,7 @@ const points = [
 
 export default function Header() {
   return (
-    <section className="bg-[#1A1D20] py-16 sm:py-20 lg:py-24">
+    <section className="bg-dark py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Yellow divider line */}
         {/* <AnimatedSection direction="left">
@@ -96,20 +96,18 @@ export default function Header() {
             <div className="lg:pl-16">
               <div className="lg:-ml-36">
                 <p className="text-sm leading-7 text-white/78 sm:text-base sm:leading-8">
-                  Abdej Nigeria Limited. (Abdej LTD) is an indigenous company
-                  incorporated in 2018. We are driven by the need for high
-                  throughput innovations in the Nigerian power sector. We provide
-                  top-notch tailored solutions to meet the ever-growing demand for
-                  different forms of robust, clean and sustainable energy in
-                  Nigeria. Our clients cut across small, medium and large scale
-                  businesses.
+                 Abdej Nigeria Limited. (Abdej) LTD is an indigenous company incorporated in
+2012. We are driven by the need for high throughput innovations in the Nigerian
+power sector. We provide top notch tailored solutions to meet the ever growing
+demand for different forms of robust, clean and engineering solutions in Nigeria.
+Our clients cut across small, medium and large scale businesses..
                 </p>
               </div>
 
               <div className="mt-8 grid gap-6 md:grid-cols-[156px_1fr] md:items-start">
                 <div className="flex h-[220px] w-full max-w-[156px] flex-col items-center justify-center rounded-[13px] bg-secondary text-center text-[#111111] shadow-lg">
                   <span className="text-4xl font-extrabold leading-none sm:text-5xl">
-                    15
+                    14
                   </span>
                   <span className="mt-3 text-sm font-semibold uppercase tracking-wide text-white">
                     Years Of
@@ -139,9 +137,8 @@ export default function Header() {
               </div>
 
               <p className="mt-8 max-w-3xl text-sm leading-7 text-white/65">
-                Providing dedicated expertise and committed service, Abdej Nigeria
-                Limited has established itself as the trusted standard for quality
-                and professionalism.
+                 Our team of dedicated experts are committed to ensuring that every project we
+undertake is executed with the highest level of quality and professionalism.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
