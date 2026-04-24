@@ -8,8 +8,10 @@ const archivo = Archivo({
   variable: '--font-archivo',
 });
 
+
 export const metadata: Metadata = {
-  title: "Generator Maintenance & Power Solutions Company in Lagos | ABDEJ Power Solutions",
+  title:
+    "Generator Maintenance & Power Solutions Company in Lagos | ABDEJ Power Solutions",
 
   description:
     "ABDEJ Power Solutions offers professional generator maintenance, diesel generator repairs, power system installation, and custom metal fabrication services in Lagos, Nigeria. Reliable, efficient, and affordable energy solutions for homes and businesses.",
@@ -24,6 +26,13 @@ export const metadata: Metadata = {
     "power system design and installation",
     "generator repair near me",
   ],
+
+  icons: {
+    icon: [
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/logo.png",
+  },
 
   openGraph: {
     title: "Reliable Generator & Power Solutions in Lagos | ABDEJ",
@@ -42,6 +51,8 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+
 
 export default function RootLayout({
   children,

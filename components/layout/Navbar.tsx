@@ -26,6 +26,7 @@ export default function Navbar() {
             alt="ABDEJ Logo"
             width={80}
             height={54}
+            priority
             className="h-auto w-[68px] sm:w-[80px] md:w-[100px] lg:w-[120px]"
           />
         </Link>

@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer"
 import Hero from "@/components/home/Hero"
 import ContactUs from "@/components/contact-us/ContactUs"
 import PitchDeck from "@/components/home/PitchDeck"
+import RequestQuote from "@/components/home/RequestQuote"
 
 
 
@@ -12,9 +13,9 @@ export default function ContactUsPage() {
   return (
     <main className="bg-dark text-white overflow-hidden">
       <Navbar />
-      <Hero/>
+      {/* <Hero/> */}
       <ContactUs/>
-      <PitchDeck/>
+      <RequestQuote/>
       <Footer/>
       </main>
   );

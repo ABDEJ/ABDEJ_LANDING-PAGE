@@ -162,6 +162,7 @@ export default function HeroCarousel() {
                 fill
                 placeholder="empty"
                 sizes="(max-width: 768px) 75vw, 65vw"
+                priority
                 className="object-cover"
               />
 

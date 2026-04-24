@@ -6,7 +6,7 @@ const features = [
   {
     title: "Proven Technical Expertise",
     desc: "We bring hands-on experience and solid technical knowledge to every project, ensuring efficient and reliable engineering solutions.",
-    icon: "/WhyChooseUsIcon1.svg",
+    icon: "/WhyChooseUsIcon.svg",
     iconWidth: 35,
     iconHeight: 35,
     wide: false,
