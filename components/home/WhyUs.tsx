@@ -29,18 +29,87 @@ const features = [
   },
 ];
 
+// export default function WhyChooseUs() {
+//   return (
+//     <section className="bg-[#1A1D20] py-20">
+//       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+//         <AnimatedSection direction="right">
+//           <div className="mb-10 flex justify-center">
+//             <div className="h-[2px] w-full max-w-[711px] bg-secondary" />
+//           </div>
+//         </AnimatedSection>
+
+//         <AnimatedSection direction="right" delay={0.1}>
+//           <div className="flex justify-center text-center">
+//             <SectionHeader
+//               title="Why Choose Us ?"
+//               subtitle="We combine technical expertise, reliable service delivery, and cost-effective solutions to meet your power and engineering needs."
+//             />
+//           </div>
+//         </AnimatedSection>
+
+//        <div className="mt-12 grid gap-5 md:grid-cols-2">
+//   {features.map((item, index) => (
+//     <AnimatedSection
+//       key={index}
+//       direction="right"
+//       delay={0.15 + index * 0.1}
+//       className={item.wide ? "md:col-span-2" : ""}
+//     >
+//       <div className="group rounded-[24px] border border-white/10 bg-[#202326] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_25px_70px_rgba(0,0,0,0.35)] sm:p-7">
+//         <div className="mb-6 flex items-start justify-between gap-4">
+//           <h3 className="max-w-[75%] text-xl font-semibold leading-tight text-white sm:text-2xl">
+//             {item.title}
+//           </h3>
+
+//           <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[18px]">
+//             <Image
+//               src={item.icon}
+//               alt={item.title}
+//               width={item.iconWidth}
+//               height={item.iconHeight}
+//               className="object-contain"
+//             />
+//           </div>
+//         </div>
+
+//         <p className="max-w-2xl text-sm leading-7 text-white/75 md:text-base">
+//           {item.desc}
+//         </p>
+
+//         <button className="mt-6 h-[48px] w-[139px] rounded-full bg-secondary text-sm font-semibold text-dark transition hover:opacity-90">
+//           Learn More
+//         </button>
+//       </div>
+//     </AnimatedSection>
+//   ))}
+// </div>
+//       </div>
+//     </section>
+//   );
+// }
+
 export default function WhyChooseUs() {
   return (
-    <section className="bg-[#1A1D20] py-20">
+    <section
+      className="why-choose-section py-20"
+      style={{ backgroundColor: "var(--section-bg)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection direction="right">
           <div className="mb-10 flex justify-center">
-            <div className="h-[2px] w-full max-w-[711px] bg-secondary" />
+            <div
+              className="h-[2px] w-full max-w-[711px]"
+              style={{ backgroundColor: "var(--line-bg)" }}
+            />
           </div>
         </AnimatedSection>
 
         <AnimatedSection direction="right" delay={0.1}>
-          <div className="flex justify-center text-center">
+          <div
+            className="flex justify-center text-center"
+            style={{ color: "var(--section-text)" }}
+          >
             <SectionHeader
               title="Why Choose Us ?"
               subtitle="We combine technical expertise, reliable service delivery, and cost-effective solutions to meet your power and engineering needs."
@@ -48,42 +117,64 @@ export default function WhyChooseUs() {
           </div>
         </AnimatedSection>
 
-       <div className="mt-12 grid gap-5 md:grid-cols-2">
-  {features.map((item, index) => (
-    <AnimatedSection
-      key={index}
-      direction="right"
-      delay={0.15 + index * 0.1}
-      className={item.wide ? "md:col-span-2" : ""}
-    >
-      <div className="group rounded-[24px] border border-white/10 bg-[#202326] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_25px_70px_rgba(0,0,0,0.35)] sm:p-7">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <h3 className="max-w-[75%] text-xl font-semibold leading-tight text-white sm:text-2xl">
-            {item.title}
-          </h3>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {features.map((item, index) => (
+            <AnimatedSection
+              key={index}
+              direction="right"
+              delay={0.15 + index * 0.1}
+              className={item.wide ? "md:col-span-2" : ""}
+            >
+              <div
+                className="group rounded-[24px]  p-6 shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(0,0,0,0.18)] sm:p-7"
+                style={{
+                  backgroundColor: "var(--card-bg)",
+                  // borderColor: "var(--card-border)",
+                }}
+              >
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <h3
+                    className="max-w-[75%] text-xl font-semibold leading-tight sm:text-2xl"
+                    style={{ color: "var(--section-text)" }}
+                  >
+                    {item.title}
+                  </h3>
 
-          <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[18px]">
-            <Image
-              src={item.icon}
-              alt={item.title}
-              width={item.iconWidth}
-              height={item.iconHeight}
-              className="object-contain"
-            />
-          </div>
+                  <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[18px]">
+                    <Image
+                        src={
+    index === 0
+      ? "/WhyChooseUsIcon-black.svg"
+      : item.icon
+  }
+                      alt={item.title}
+                      width={item.iconWidth}
+                      height={item.iconHeight}
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+
+                <p
+                  className="max-w-2xl text-sm leading-7 md:text-base"
+                  style={{ color: "var(--section-muted)" }}
+                >
+                  {item.desc}
+                </p>
+
+                <button
+                  className="mt-6 h-[48px] w-[139px] rounded-full text-sm font-semibold transition hover:opacity-90"
+                  style={{
+                    backgroundColor: "var(--button-bg)",
+                    color: "var(--button-text)",
+                  }}
+                >
+                  Learn More
+                </button>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
-
-        <p className="max-w-2xl text-sm leading-7 text-white/75 md:text-base">
-          {item.desc}
-        </p>
-
-        <button className="mt-6 h-[48px] w-[139px] rounded-full bg-secondary text-sm font-semibold text-dark transition hover:opacity-90">
-          Learn More
-        </button>
-      </div>
-    </AnimatedSection>
-  ))}
-</div>
       </div>
     </section>
   );

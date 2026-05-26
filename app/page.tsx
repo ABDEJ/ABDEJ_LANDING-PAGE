@@ -26,7 +26,7 @@ export default function LandingPage() {
        <Services />
       <Projects />
        <WhyUs />
-     <section id="about-us" className="scroll-mt-32">
+     <section id="about-us" className="scroll-mt-40">
   <AboutUs />
 </section>
          <Testimonials />

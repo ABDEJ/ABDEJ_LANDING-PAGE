@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import SectionHeader from "../SectionHeader";
 import AnimatedSection from "../Animations";
@@ -25,10 +27,17 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-dark py-20">
+    <section
+      className="testimonials-section py-20"
+      style={{ backgroundColor: "var(--section-bg)" }}
+    >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <AnimatedSection delay={0.1}>
-          <div className="flex justify-center text-center">
+          <div
+            className="flex justify-center text-center"
+            style={{ color: "var(--section-text)" }}
+          >
             <SectionHeader
               title="Testimonials"
               subtitle="See what our customers have to say about their experience."
@@ -36,9 +45,14 @@ export default function Testimonials() {
           </div>
         </AnimatedSection>
 
+        {/* Testimonials */}
         <div className="mt-12 space-y-10">
           {testimonials.map((item, index) => (
-            <AnimatedSection key={index} delay={0.15 + index * 0.12} direction="up">
+            <AnimatedSection
+              key={index}
+              delay={0.15 + index * 0.12}
+              direction="up"
+            >
               <div className="max-w-3xl">
                 <div className="mb-3 flex items-center gap-3">
                   <Image
@@ -50,18 +64,30 @@ export default function Testimonials() {
                   />
 
                   <div>
-                    <h4 className="text-base font-semibold text-white">
+                    <h4
+                      className="text-base font-semibold"
+                      style={{ color: "var(--section-text)" }}
+                    >
                       {item.name}
                     </h4>
 
                     <div className="mt-1 flex items-center gap-3">
                       <span className="text-secondary">★★★★★</span>
-                      <p className="text-sm text-white/60">{item.role}</p>
+
+                      <p
+                        className="text-sm"
+                        style={{ color: "var(--section-muted)" }}
+                      >
+                        {item.role}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm leading-7 text-white/75 md:text-base">
+                <p
+                  className="text-sm leading-7 md:text-base"
+                  style={{ color: "var(--section-muted)" }}
+                >
                   “{item.text}”
                 </p>
 
@@ -88,6 +114,7 @@ export default function Testimonials() {
           ))}
         </div>
 
+        {/* Arrows */}
         <AnimatedSection delay={0.45}>
           <div className="mt-10 flex justify-end gap-4">
             <button className="flex h-[41px] w-[41px] items-center justify-center rounded-full bg-secondary text-3xl text-dark">

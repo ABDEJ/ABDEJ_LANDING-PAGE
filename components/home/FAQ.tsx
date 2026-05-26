@@ -41,16 +41,27 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-dark py-20">
+    <section
+      className="faq-section py-20"
+      style={{ backgroundColor: "var(--section-bg)" }}
+    >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        {/* Divider */}
         <AnimatedSection direction="up">
           <div className="mb-6 flex justify-center">
-            <div className="mb-4 h-[2px] w-full max-w-[711px] bg-secondary" />
+            <div
+              className="mb-4 h-[2px] w-full max-w-[711px]"
+             style={{ backgroundColor: "var(--divider-color)" }}
+            />
           </div>
         </AnimatedSection>
 
+        {/* Header */}
         <AnimatedSection direction="up" delay={0.1}>
-          <div className="mt-4 flex justify-center text-center">
+          <div
+            className="mt-4 flex justify-center text-center"
+            style={{ color: "var(--section-text)" }}
+          >
             <SectionHeader
               title="FAQs"
               subtitle="Have questions? Find answers to frequently asked questions about us."
@@ -58,6 +69,7 @@ export default function FAQs() {
           </div>
         </AnimatedSection>
 
+        {/* FAQ Items */}
         <div className="mt-12 space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -68,27 +80,41 @@ export default function FAQs() {
                 direction="up"
                 delay={0.15 + index * 0.08}
               >
-                <div className="rounded-2xl border border-white/10 bg-transparent">
+                <div
+                  className="rounded-2xl border bg-transparent"
+                  style={{
+                    borderColor: "var(--border-color)",
+                  }}
+                >
                   <button
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
+                    style={{ color: "var(--section-text)" }}
                   >
-                    <span className="text-base font-medium text-white">
+                    <span className="text-base font-medium">
                       {faq.question}
                     </span>
+
                     <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md ${
-                        isOpen
-                          ? "bg-[#F4C430] text-[#111111]"
-                          : "bg-white text-[#111111]"
-                      }`}
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition"
+                      style={{
+                        backgroundColor: isOpen
+                          ? "var(--toggle-open-bg)"
+                          : "var(--toggle-closed-bg)",
+                        color: isOpen
+                          ? "var(--toggle-open-text)"
+                          : "var(--toggle-closed-text)",
+                      }}
                     >
                       {isOpen ? "−" : "+"}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-sm leading-7 text-white/70">
+                    <div
+                      className="px-5 pb-5 text-sm leading-7"
+                      style={{ color: "var(--section-muted)" }}
+                    >
                       {faq.answer}
                     </div>
                   )}

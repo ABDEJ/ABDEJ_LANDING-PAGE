@@ -38,10 +38,10 @@ const projects = [
 
 export default function ProjectsGrid() {
   return (
-    <section className="bg-dark py-16">
+    <section className="projects-section bg-[var(--section-bg)] text-[var(--section-text)] py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection delay={0.1}>
-          <h3 className="mb-8 text-3xl font-bold text-white">Our Projects</h3>
+          <h3 className="mb-8 text-3xl font-bold text-[var(--header-text)]">Our Projects</h3>
         </AnimatedSection>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

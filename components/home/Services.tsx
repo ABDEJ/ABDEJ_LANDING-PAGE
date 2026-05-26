@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AnimatedSection from "../Animations";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const tabs = [
   { label: "All Categories", id: "core-services" },
   { label: "Our Services", id: "our-services" },
   { label: "Projects", id: "projects" },
   { label: "About Us", id: "about-us" },
-  { label: "Safety Equipment", id: "safety-equipment" },
 ];
 
 const services = [
@@ -35,73 +36,78 @@ const partners = [
   { name: "Gt bank", logo: "/OurPartners/gtbank.svg" },
   { name: "Zenith bank", logo: "/OurPartners/zenithbank.svg" },
   { name: "Nigerian Stock Exchange", logo: "/OurPartners/nse.svg" },
-  // { name: "Jeruzeth International Limited", logo: "/partners/hitachi.svg" },
-  // { name: "Federal Palace Hotel", logo: "/partners/jcb.svg" },
   { name: "Poly product", logo: "/OurPartners/polygroup.svg" },
-  // { name: "Esorae", logo: "/partners/samsung.svg" },
-  { name: "Viathan Nigeria Limited", logo: "/Ourpartners/viathan.svg" },
+  { name: "Viathan Nigeria Limited", logo: "/OurPartners/viathan.svg" },
   { name: "Cappa & D'Alberto Nigeria Limited", logo: "/OurPartners/Cappa.svg" },
 ];
 
 export default function CoreServices() {
   const [activeTab, setActiveTab] = useState("core-services");
+  const [isTabsFixed, setIsTabsFixed] = useState(false);
+
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const isManualScrolling = useRef(false);
-  const manualScrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const tabsWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const isManualScrolling = useRef(false);
+  const manualScrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
 
   useEffect(() => {
-    const sectionIds = [...new Set(tabs.map((tab) => tab.id))];
+    const handleScrollSpy = () => {
+      if (isManualScrolling.current) return;
 
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+      const scrollPoint = window.scrollY + 180;
+      let currentSection = "core-services";
 
-    if (!sections.length) return;
+      tabs.forEach((tab) => {
+        const section = document.getElementById(tab.id);
+        if (!section) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isManualScrolling.current) return;
-
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleEntries.length > 0) {
-          const activeId = visibleEntries[0].target.id;
-          setActiveTab(activeId);
+        if (section.offsetTop <= scrollPoint) {
+          currentSection = tab.id;
         }
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0.25, 0.4, 0.6],
-      }
-    );
+      });
 
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      observer.disconnect();
-      if (manualScrollTimeout.current) clearTimeout(manualScrollTimeout.current);
+      setActiveTab(currentSection);
     };
+
+    window.addEventListener("scroll", handleScrollSpy);
+    handleScrollSpy();
+
+    return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
 
-useEffect(() => {
-  const activeButton = tabRefs.current[activeTab];
-  const container = tabsContainerRef.current;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!tabsWrapperRef.current) return;
 
-  if (!activeButton || !container) return;
+      const tabsTop = tabsWrapperRef.current.getBoundingClientRect().top;
+      setIsTabsFixed(tabsTop <= 80);
+    };
 
-  const buttonLeft = activeButton.offsetLeft;
-  const buttonWidth = activeButton.offsetWidth;
-  const containerWidth = container.offsetWidth;
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
-  container.scrollTo({
-    left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
-    behavior: "smooth",
-  });
-}, [activeTab]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const activeButton = tabRefs.current[activeTab];
+    const container = tabsContainerRef.current;
+
+    if (!activeButton || !container) return;
+
+    const buttonLeft = activeButton.offsetLeft;
+    const buttonWidth = activeButton.offsetWidth;
+    const containerWidth = container.offsetWidth;
+
+    container.scrollTo({
+      left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
+      behavior: "smooth",
+    });
+  }, [activeTab]);
 
   const handleTabClick = (id: string) => {
     const section = document.getElementById(id);
@@ -110,7 +116,7 @@ useEffect(() => {
     isManualScrolling.current = true;
     setActiveTab(id);
 
-    const yOffset = -100;
+    const yOffset = isTabsFixed ? -90 : -70;
     const y =
       section.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
@@ -125,22 +131,39 @@ useEffect(() => {
 
     manualScrollTimeout.current = setTimeout(() => {
       isManualScrolling.current = false;
-    }, 1500);
+    }, 1200);
   };
 
   return (
     <section
       id="core-services"
-      className="overflow-hidden bg-dark py-20 text-white"
+      className="services-section bg-[var(--section-bg)] py-20 text-[var(--section-text)] transition-colors duration-300"
     >
       <div className="mx-auto max-w-6xl px-4">
-        <AnimatedSection>
-          <div className="mb-12 flex justify-center">
-            <div className="no-scrollbar w-full overflow-x-auto">
-             <div
-  ref={tabsContainerRef}
-  className="mx-auto flex w-max min-w-full flex-nowrap gap-2 rounded-full bg-black/40 p-2 backdrop-blur-md md:w-fit md:min-w-0 md:justify-center"
->
+        <div ref={tabsWrapperRef} className="mb-12 h-[64px]">
+          <motion.div
+            initial={false}
+            animate={{ y: 0, scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 180,
+              damping: 20,
+            }}
+            className={`z-[999] flex justify-center transition-colors duration-300 ${
+              isTabsFixed
+                ? "fixed left-0 right-0 top-0 bg-[var(--fixed-tabs-bg)] px-4 py-3 backdrop-blur-md shadow-sm"
+                : "relative bg-transparent py-0"
+            }`}
+          >
+            <div className="no-scrollbar w-full max-w-6xl overflow-x-auto">
+              <div
+                ref={tabsContainerRef}
+                className={`mx-auto flex w-max min-w-full flex-nowrap gap-2 rounded-full border border-[var(--tabs-border)] p-2 backdrop-blur-md transition-colors duration-300 md:w-fit md:min-w-0 md:justify-center ${
+                  isTabsFixed
+                    ? "bg-[var(--tabs-container-fixed)]"
+                    : "bg-[var(--tabs-container)]"
+                }`}
+              >
                 {tabs.map((tab) => {
                   const isActive = activeTab === tab.id;
 
@@ -153,8 +176,8 @@ useEffect(() => {
                       onClick={() => handleTabClick(tab.id)}
                       className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-sm transition-all duration-300 ${
                         isActive
-                          ? "bg-secondary font-medium text-dark"
-                          : "text-gray-300 hover:text-white"
+                          ? "bg-[var(--tab-active-bg)] font-medium text-[var(--tab-active-text)] shadow-sm"
+                          : "text-[var(--tab-text)] hover:text-[var(--tab-hover)]"
                       }`}
                     >
                       {tab.label}
@@ -163,17 +186,18 @@ useEffect(() => {
                 })}
               </div>
             </div>
-          </div>
-        </AnimatedSection>
+          </motion.div>
+        </div>
 
         <AnimatedSection delay={0.1}>
-          <div id="our-services" className="mb-14 scroll-mt-28 text-center">
+          <div id="our-services" className="mb-14 scroll-mt-40 text-center">
             <h2 className="text-2xl font-semibold md:text-3xl">
               Our Core Services
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-gray-400">
-              Skip the paperwork. Source materials, track shipments, and manage
-              invoices—all in one dashboard.
+
+            <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--section-muted)]">
+              Engineering solutions to keep your operations running without
+              interruption.
             </p>
           </div>
         </AnimatedSection>
@@ -183,21 +207,30 @@ useEffect(() => {
             <AnimatedSection key={index} delay={0.15 + index * 0.1}>
               <div className="flex gap-4">
                 <div className="mt-1">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full">
                     <Image
-                      src="/CheckImage.svg"
+                      src="/check-dark-mode.svg"
                       alt="Check"
                       width={32}
                       height={32}
+                      className="hidden dark-check-icon"
+                    />
+                    <Image
+                      src="/check-light-mode.svg"
+                      alt="Check"
+                      width={32}
+                      height={32}
+                      className="hidden light-check-icon"
                     />
                   </div>
                 </div>
 
-                <div className="w-full border-b border-white/10 pb-6">
+                <div className="w-full border-b border-[var(--service-border)] pb-6">
                   <h3 className="text-sm font-medium md:text-base">
                     {service.title}
                   </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-400 md:text-sm">
+
+                  <p className="mt-2 text-xs leading-relaxed text-[var(--section-muted)] md:text-sm">
                     {service.desc}
                   </p>
                 </div>
@@ -208,96 +241,45 @@ useEffect(() => {
 
         <AnimatedSection delay={0.55}>
           <div className="mt-14 flex justify-center">
-            <button
-              onClick={() => handleTabClick("projects")}
-              className="rounded-full bg-white px-8 py-3 text-sm font-medium text-dark transition hover:scale-105"
-            >
-              View Projects
-            </button>
+            <Link
+  href="/projects"
+  className="rounded-full bg-[var(--button-bg)] px-8 py-3 text-sm font-medium text-[var(--button-text)] transition hover:scale-105 hover:bg-[var(--button-hover)]"
+>
+  View Projects
+</Link>
           </div>
         </AnimatedSection>
       </div>
 
       <div
         id="projects"
-        className="relative left-1/2 right-1/2 mt-20 w-screen -translate-x-1/2 overflow-hidden bg-[#F3F1EB] py-6 text-black scroll-mt-28"
+        className="relative left-1/2 right-1/2 mt-20 w-screen -translate-x-1/2 overflow-hidden bg-[var(--partners-bg)] py-6 text-[var(--partners-text)] scroll-mt-40"
       >
         <div className="mx-auto max-w-6xl px-4">
           <AnimatedSection>
             <div className="mb-7 flex justify-center">
-              <div className="flex items-center gap-1">
-                <svg
-                  className="-mr-7 -translate-y-4"
-                  width="60"
-                  height="10"
-                  viewBox="0 0 42 10"
-                >
-                  <path
-                    d="M0 6 C8 4, 16 4, 24 6 S 36 8, 42 5"
-                    stroke="#FFD95A"
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-
-                <h3 className="text-[18px] font-semibold text-dark md:text-[20px]">
-                  Our Partners
-                </h3>
-
-                <svg
-                  className="translate-y-4"
-                  width="40"
-                  height="12"
-                  viewBox="0 0 40 12"
-                  fill="none"
-                >
-                  <path
-                    d="M0 6 C10 12, 30 0, 40 6"
-                    stroke="#FFD95A"
-                    strokeWidth="2"
-                    fill="transparent"
-                  />
-                </svg>
-              </div>
+              <h3 className="text-[18px] font-semibold md:text-[20px]">
+                Our Partners
+              </h3>
             </div>
           </AnimatedSection>
 
           <div className="relative overflow-hidden">
             <div className="partners-marquee flex items-center">
-              <div className="flex shrink-0 items-center gap-12 pr-12 md:gap-20 md:pr-20">
-                {partners.map((partner) => (
-                  <div
-                    key={partner.name}
-                    className="flex h-[40px] w-[100px] items-center justify-center md:h-[52px] md:w-[140px]"
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      width={140}
-                      height={52}
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex shrink-0 items-center gap-12 pr-12 md:gap-20 md:pr-20">
-                {partners.map((partner, index) => (
-                  <div
-                    key={`${partner.name}-${index}`}
-                    className="flex h-[40px] w-[100px] items-center justify-center md:h-[52px] md:w-[140px]"
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      width={140}
-                      height={52}
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
+              {[...partners, ...partners].map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className="mr-12 flex h-[40px] w-[100px] shrink-0 items-center justify-center md:mr-20 md:h-[52px] md:w-[140px]"
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={140}
+                    height={52}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -13,7 +13,6 @@ export default function ContactUsPage() {
   return (
     <main className="bg-dark text-white overflow-hidden">
       <Navbar />
-      {/* <Hero/> */}
       <ContactUs/>
       <RequestQuote/>
       <Footer/>

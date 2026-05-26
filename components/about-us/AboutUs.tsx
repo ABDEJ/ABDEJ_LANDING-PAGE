@@ -68,36 +68,11 @@ const valueItems: CardItem[] = [
 ];
 
 const coreValues: CardItem[] = [
-  {
-    acronym: "A",
-    title: "Accountability",
-    description:
-      "We take ownership of every responsibility and deliver on our promises.",
-  },
-  {
-    acronym: "B",
-    title: "Brilliance",
-    description:
-      "We strive for excellence in everything we do. We are committed to overcoming challenges and delivering results.",
-  },
-  {
-    acronym: "D",
-    title: "Dynamism",
-    description:
-      "We adapt to changing circumstances, embracing innovation and progress.",
-  },
-  {
-    acronym: "E",
-    title: "Expertise",
-    description:
-      "We develop and maintain specialized knowledge to deliver exceptional results.",
-  },
-  {
-    acronym: "J",
-    title: "Judgment",
-    description:
-      "We exercise sound judgment, balancing risk and opportunity.",
-  },
+  { acronym: "A", title: "Accountability", description: "We take ownership of every responsibility and deliver on our promises." },
+  { acronym: "B", title: "Brilliance", description: "We strive for excellence in everything we do." },
+  { acronym: "D", title: "Dynamism", description: "We adapt to changing circumstances, embracing innovation." },
+  { acronym: "E", title: "Expertise", description: "We develop and maintain specialized knowledge." },
+  { acronym: "J", title: "Judgment", description: "We exercise sound judgment, balancing risk and opportunity." },
 ];
 
 function SectionHeading({ title }: { title: string }) {
@@ -109,80 +84,106 @@ function SectionHeading({ title }: { title: string }) {
         width={65}
         height={65}
         className="-mr-1"
+        style={{ filter: "var(--icon-filter, none)" }}
       />
-      <h2 className="text-lg font-semibold text-primary sm:text-xl md:text-2xl">
+      <h2
+        className="text-lg font-semibold sm:text-xl md:text-2xl"
+        style={{ color: "var(--section-text)" }}
+      >
         {title}
       </h2>
     </div>
   );
 }
 
-function InfoCard({
-  title,
-  description,
-  icon,
-}: {
-  title?: string;
-  description: string;
-  icon?: string;
-}) {
+function InfoCard({ title, description, icon }: CardItem) {
   return (
-    <div className="group rounded-[22px] border border-white/5 bg-dark-card px-5 py-7 text-center shadow-[0_10px_30px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30">
+    <div
+      className="group rounded-[22px] px-5 py-7 text-center transition-all duration-300 hover:-translate-y-1"
+      style={{
+        background: "var(--card-bg)",
+        border: "1px solid var(--card-border)",
+      }}
+    >
       {icon && (
         <div className="mb-4 flex justify-center">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 transition group-hover:bg-secondary/10 group-hover:ring-secondary/30">
+          <div
+            className="flex h-14 w-14 items-center justify-center rounded-full transition"
+            style={{
+              background: "var(--icon-bg)",
+              boxShadow: `0 0 0 1px var(--icon-ring)`,
+            }}
+          >
             <Image
               src={icon}
-              alt={title ? `${title} icon` : "Card icon"}
+              alt="icon"
               width={24}
               height={24}
               className="h-6 w-6 object-contain"
+              style={{ filter: "var(--icon-filter, none)" }}
             />
           </div>
         </div>
       )}
 
       {title && (
-        <h3 className="mb-2 text-base font-semibold text-secondary sm:text-lg">
+        <h3
+          className="mb-2 text-base font-semibold sm:text-lg"
+          style={{ color: "var(--title-color)" }}
+        >
           {title}
         </h3>
       )}
 
-      <p className="mx-auto max-w-[240px] text-sm leading-6 text-white/75">
+      <p
+        className="mx-auto max-w-[240px] text-sm leading-6"
+        style={{ color: "var(--section-muted)" }}
+      >
         {description}
       </p>
     </div>
   );
 }
 
-function AcronymCard({
-  acronym,
-  title,
-  description,
-}: {
-  acronym: string;
-  title?: string;
-  description: string;
-}) {
+function AcronymCard({ acronym, title, description }: CardItem) {
   return (
-    <div className="group h-full rounded-[22px] border border-white/5 bg-dark-card px-5 py-7 text-center shadow-[0_10px_30px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30">
-      
-      {/* SAME ICON CONTAINER AS OTHER CARDS */}
+    <div
+      className="group h-full rounded-[22px] px-5 py-7 text-center transition-all duration-300 hover:-translate-y-1"
+      style={{
+        background: "var(--card-bg)",
+        border: "1px solid var(--card-border)",
+      }}
+    >
       <div className="mb-4 flex justify-center">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 transition group-hover:bg-secondary/10 group-hover:ring-secondary/30">
-          <span className="text-xl font-bold text-secondary sm:text-2xl">
+        <div
+          className="flex h-14 w-14 items-center justify-center rounded-full"
+          style={{
+            background: "var(--icon-bg)",
+            boxShadow: `0 0 0 1px var(--icon-ring)`,
+          }}
+        >
+          <span
+            className="text-xl font-bold sm:text-2xl"
+            style={{ color: "var(--title-color)" }}
+          >
             {acronym}
           </span>
         </div>
       </div>
 
       {title && (
-        <h3 className="mb-2 text-base font-semibold text-secondary sm:text-lg">
+        <h3
+          className="mb-2 text-base font-semibold sm:text-lg"
+          style={{ color: "var(--title-color)" }}
+        >
           {title}
         </h3>
       )}
 
-      <p className="mx-auto max-w-[240px] text-sm leading-6 text-white/75">
+      <p
+        className="mx-auto max-w-[240px] text-sm leading-6"
+        style={{ color: "var(--section-muted)" }}
+      >
         {description}
       </p>
     </div>
@@ -191,20 +192,18 @@ function AcronymCard({
 
 export default function AboutSection() {
   return (
-    <section className="overflow-hidden bg-dark">
+    <section
+      className="about-us-section overflow-hidden"
+      style={{ background: "var(--section-bg)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+
         <AnimatedSection>
           <div className="mb-16">
             <SectionHeading title="Our Mission Statement" />
-
             <div className="grid gap-6 md:grid-cols-3">
-              {missionItems.map((card, index) => (
-                <InfoCard
-                  key={`mission-${index}`}
-                  title={card.title}
-                  description={card.description}
-                  icon={card.icon}
-                />
+              {missionItems.map((card, i) => (
+                <InfoCard key={i} {...card} />
               ))}
             </div>
           </div>
@@ -213,15 +212,9 @@ export default function AboutSection() {
         <AnimatedSection>
           <div className="mb-16">
             <SectionHeading title="Our Value Statement" />
-
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {valueItems.map((card, index) => (
-                <InfoCard
-                  key={`value-${index}`}
-                  title={card.title}
-                  description={card.description}
-                  icon={card.icon}
-                />
+              {valueItems.map((card, i) => (
+                <InfoCard key={i} {...card} />
               ))}
             </div>
           </div>
@@ -230,29 +223,25 @@ export default function AboutSection() {
         <AnimatedSection>
           <div className="mb-12">
             <SectionHeading title="Core Values Acronym - ABDEJ" />
-
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-6">
-              {coreValues.map((card, index) => {
+              {coreValues.map((card, i) => {
                 const spanClass =
-                  index < 3
+                  i < 3
                     ? "lg:col-span-2"
-                    : index === 3
+                    : i === 3
                     ? "lg:col-start-2 lg:col-span-2"
                     : "lg:col-start-4 lg:col-span-2";
 
                 return (
-                  <div key={`core-${index}`} className={spanClass}>
-                    <AcronymCard
-                      acronym={card.acronym || ""}
-                      title={card.title}
-                      description={card.description}
-                    />
+                  <div key={i} className={spanClass}>
+                    <AcronymCard {...card} />
                   </div>
                 );
               })}
             </div>
           </div>
         </AnimatedSection>
+
       </div>
     </section>
   );

@@ -1,80 +1,137 @@
-// import { Instagram, Facebook, Dribbble } from "react-icons";
+"use client";
+
 import Link from "next/link";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  ChevronRight,
+} from "lucide-react";
+import { FiInstagram, FiFacebook, FiDribbble } from "react-icons/fi";
 
-const shopLinks = [
-  "Building Materials",
-  "Tools & Hardware",
-  "Electrical",
-  "Pipes & Fittings",
-  "Safety Equipment",
-];
-
-const companyLinks = [
-  "Company",
-  "Careers",
-  "Press",
-  "Partnerships",
-  "CSR",
-];
-
-const supportLinks = [
-  "Help Center",
-  "Contact Us",
-  "Track Order",
-  "Returns",
-  "FAQ",
-];
-
-const accountLinks = [
-  "My Account",
-  "Order History",
-  "Wishlist",
-  "Wishlist",
-  "Saved Items",
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about-us" },
+  { name: "Our Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
+  { name: "Contact Us", href: "/contact-us" },
 ];
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-dark text-white">
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 md:px-10 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_3fr]">
-          {/* Left brand block */}
-          <div className="max-w-sm">
-            <h2 className="text-[46px] font-bold leading-none tracking-[-0.03em] text-white">
+    <footer
+      className="footer-section"
+      style={{
+        background: "var(--section-bg)",
+        color: "var(--section-text)",
+      }}
+    >
+      <div className="mx-auto max-w-7xl px-6 pb-8 pt-20 md:px-10 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr_1fr]">
+
+          {/* LEFT */}
+          <div>
+            <h2 className="text-[46px] font-bold leading-none tracking-[-0.03em]">
               Abdej
             </h2>
-            <p className="mt-4 text-[15px] leading-7 text-white/70">
+
+            <p
+              className="mt-4 text-[15px]"
+              style={{ color: "var(--section-muted)" }}
+            >
               Your trusted partner for quality power solutions.
             </p>
+
+            <h3 className="mt-8 mb-5 text-[20px] font-semibold">
+              Company&apos;s Info
+            </h3>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <InfoItem icon={<Mail size={18} />} text="info@gmail.com" />
+              <InfoItem icon={<MapPin size={18} />} text="Eko Hotel Ikeja Lagos Nigeria" />
+              <InfoItem icon={<Phone size={18} />} text="+9955442318" />
+            </div>
           </div>
 
-          {/* Right columns */}
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            <FooterColumn title="Shop" links={shopLinks} />
-            <FooterColumn title="Company" links={companyLinks} />
-            <FooterColumn title="Support" links={supportLinks} />
-            <div className="flex flex-col justify-between">
-              <FooterColumn title="Account" links={accountLinks} />
+          {/* LINKS */}
+          <div>
+            <h3 className="mb-5 text-[20px] font-semibold">Quick Links</h3>
 
-              <div className="mt-6 flex items-center gap-3 lg:justify-end">
-                {/* <SocialIcon href="#" icon={<Instagram size={15} />} />
-                <SocialIcon href="#" icon={<Facebook size={15} />} />
-                <SocialIcon href="#" icon={<Dribbble size={15} />} /> */}
-              </div>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 text-[15px] transition"
+                    style={{ color: "var(--section-muted)" }}
+                  >
+                    <ChevronRight
+                      size={16}
+                      style={{ color: "var(--icon-color)" }}
+                    />
+                    <span className="hover:underline">
+                      {link.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT */}
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <SocialIcon href="#" icon={<FiInstagram size={16} />} />
+              <SocialIcon href="#" icon={<FiFacebook size={16} />} />
+              <SocialIcon href="#" icon={<FiDribbble size={16} />} />
             </div>
+
+            <h3 className="mb-5 text-[20px] font-semibold">Newsletter</h3>
+
+            <form className="flex max-w-[280px] flex-col gap-3">
+              <input
+                type="email"
+                placeholder="Your Email Address"
+                className="h-14 rounded-md px-4 text-sm outline-none"
+                style={{
+                  background: "var(--input-bg)",
+                  border: "2px solid var(--input-border)",
+                  color: "var(--input-text)",
+                }}
+              />
+
+              <button
+                type="submit"
+                className="h-11 w-fit rounded-md px-7 text-sm font-medium transition"
+                style={{
+                  background: "var(--button-bg)",
+                  color: "var(--button-text)",
+                }}
+              >
+                Sign Up
+              </button>
+            </form>
           </div>
         </div>
 
-        <div className="mt-12 h-px w-full bg-white/10" />
+        <div
+          className="mt-20 h-px w-full"
+          style={{ background: "var(--border-color)" }}
+        />
 
-        <div className="mt-6 flex flex-col gap-4 text-sm text-white/55 md:flex-row md:items-center md:justify-between">
-          <p>©2025 Abdej. All rights reserved.</p>
+        <div
+          className="mt-8 flex flex-col gap-4 text-sm md:flex-row md:items-center md:justify-between"
+          style={{ color: "var(--section-muted)" }}
+        >
+          <p>©{currentYear} Abdej. All rights reserved.</p>
 
-          <div className="flex items-center gap-6">
-            <Link href="#" className="transition hover:text-white">
+          <div className="flex items-center gap-8">
+            <Link href="#" className="hover:underline">
               Privacy
             </Link>
-            <Link href="#" className="transition hover:text-white">
+            <Link href="#" className="hover:underline">
               Terms
             </Link>
           </div>
@@ -84,29 +141,27 @@ export default function Footer() {
   );
 }
 
-function FooterColumn({
-  title,
-  links,
+/* ================= SUB COMPONENTS ================= */
+
+function InfoItem({
+  icon,
+  text,
 }: {
-  title: string;
-  links: string[];
+  icon: React.ReactNode;
+  text: string;
 }) {
   return (
-    <div>
-      <h3 className="mb-5 text-[22px] font-semibold text-white">{title}</h3>
-
-      <ul className="space-y-3">
-        {links.map((link, index) => (
-          <li key={`${link}-${index}`}>
-            <Link
-              href="#"
-              className="text-[15px] text-white/70 transition hover:text-[#F4C430]"
-            >
-              {link}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div
+      className="flex items-start gap-3 text-[15px]"
+      style={{ color: "var(--section-muted)" }}
+    >
+      <span
+        className="mt-0.5 flex h-6 w-6 items-center justify-center"
+        style={{ color: "var(--icon-color)" }}
+      >
+        {icon}
+      </span>
+      <span className="leading-5">{text}</span>
     </div>
   );
 }
@@ -121,7 +176,11 @@ function SocialIcon({
   return (
     <Link
       href={href}
-      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-[#F4C430] hover:text-[#F4C430]"
+      className="flex h-9 w-9 items-center justify-center rounded-full transition"
+      style={{
+        border: "1px solid var(--social-border)",
+        color: "var(--social-text)",
+      }}
     >
       {icon}
     </Link>

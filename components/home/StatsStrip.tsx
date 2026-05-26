@@ -8,18 +8,31 @@ const stats = [
 
 export default function StatsStrip() {
   return (
-    <section className="bg-dark py-10">
-      <AnimatedSection delay={0.1} >
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
-        {stats.map((stat, index) => (
-          <div key={index}>
-            <div className="text-4xl font-extrabold text-secondary">{stat.value}</div>
-            <div className="mt-2 text-sm text-secondary">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-</AnimatedSection>
-    
+    <section
+      className="stats-section py-10"
+      style={{ backgroundColor: "var(--section-bg)" }}
+    >
+      <AnimatedSection delay={0.1}>
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
+          {stats.map((stat, index) => (
+            <div key={index}>
+              <div
+                className="text-4xl font-extrabold"
+                style={{ color: "var(--accent)" }}
+              >
+                {stat.value}
+              </div>
+
+              <div
+                className="mt-2 text-sm"
+                style={{ color: "var(--section-text)" }}
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </AnimatedSection>
     </section>
   );
 }
