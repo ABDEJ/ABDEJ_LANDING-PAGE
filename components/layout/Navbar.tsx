@@ -160,7 +160,7 @@ export default function Navbar() {
             ))}
           </div>
 
-         <motion.div
+         {/* <motion.div
   whileHover={{ y: -3, scale: 1.02 }}
   whileTap={{ scale: 0.98 }}
   transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -175,7 +175,7 @@ export default function Navbar() {
       className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
     />
   </Link>
-</motion.div>
+</motion.div> */}
         </div>
       </div>
     </nav>
