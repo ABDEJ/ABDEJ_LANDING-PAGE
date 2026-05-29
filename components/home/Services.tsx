@@ -6,6 +6,7 @@ import AnimatedSection from "../Animations";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import SectionHeader from "../SectionHeader";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const tabs = [
   { label: "All Categories", id: "core-services" },
@@ -54,6 +55,15 @@ export default function CoreServices() {
   const manualScrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+
+  const scrollTabs = (direction: "left" | "right") => {
+  if (!tabsContainerRef.current) return;
+
+  tabsContainerRef.current.scrollBy({
+    left: direction === "left" ? -200 : 200,
+    behavior: "smooth",
+  });
+};
 
   useEffect(() => {
     const handleScrollSpy = () => {
@@ -141,54 +151,76 @@ export default function CoreServices() {
       className="services-section bg-[var(--section-bg)] py-20 text-[var(--section-text)] transition-colors duration-300"
     >
       <div className="mx-auto max-w-6xl px-4">
-        <div ref={tabsWrapperRef} className="mb-12 h-[64px]">
-          <motion.div
-            initial={false}
-            animate={{ y: 0, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 180,
-              damping: 20,
-            }}
-            className={`z-[999] flex justify-center transition-colors duration-300 ${
-              isTabsFixed
-                ? "fixed left-0 right-0 top-0 bg-[var(--fixed-tabs-bg)] px-4 py-3 backdrop-blur-md shadow-sm"
-                : "relative bg-transparent py-0"
-            }`}
-          >
-            <div className="no-scrollbar w-full max-w-6xl overflow-x-auto">
-              <div
-                ref={tabsContainerRef}
-                className={`mx-auto flex w-max min-w-full flex-nowrap gap-2 rounded-full border border-[var(--tabs-border)] p-2 backdrop-blur-md transition-colors duration-300 md:w-fit md:min-w-0 md:justify-center ${
-                  isTabsFixed
-                    ? "bg-[var(--tabs-container-fixed)]"
-                    : "bg-[var(--tabs-container)]"
+       <div ref={tabsWrapperRef} className="mb-12 h-[64px]">
+  <motion.div
+    initial={false}
+    animate={{ y: 0, scale: 1 }}
+    transition={{
+      type: "spring",
+      stiffness: 180,
+      damping: 20,
+    }}
+    className={`z-[999] flex justify-center transition-colors duration-300 ${
+      isTabsFixed
+        ? "fixed left-0 right-0 top-0 bg-[var(--fixed-tabs-bg)] px-2 py-3 backdrop-blur-md shadow-sm"
+        : "relative bg-transparent py-0"
+    }`}
+  >
+    <div className="relative flex w-full max-w-6xl items-center">
+
+      {/* LEFT ARROW - MOBILE ONLY */}
+      <button
+        onClick={() => scrollTabs("left")}
+        className="absolute left-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--tabs-container)] shadow-md md:hidden"
+      >
+        <ChevronLeft size={18} />
+      </button>
+
+      {/* TABS */}
+    <div
+  ref={tabsContainerRef}
+  className="no-scrollbar mx-10 md:mx-0 flex w-full overflow-x-auto scroll-smooth md:justify-center"
+>
+        <div
+     className={`mx-auto flex w-max flex-nowrap gap-2 rounded-full border border-[var(--tabs-border)] p-2 backdrop-blur-md transition-colors duration-300 ${
+  isTabsFixed
+    ? "bg-[var(--tabs-container-fixed)]"
+    : "bg-[var(--tabs-container)]"
+}`}
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+
+            return (
+              <button
+                key={`${tab.label}-${tab.id}`}
+                ref={(el) => {
+                  tabRefs.current[tab.id] = el;
+                }}
+                onClick={() => handleTabClick(tab.id)}
+                className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-sm transition-all duration-300 ${
+                  isActive
+                    ? "bg-[var(--tab-active-bg)] font-medium text-[var(--tab-active-text)] shadow-sm"
+                    : "text-[var(--tab-text)] hover:text-[var(--tab-hover)]"
                 }`}
               >
-                {tabs.map((tab) => {
-                  const isActive = activeTab === tab.id;
-
-                  return (
-                    <button
-                      key={`${tab.label}-${tab.id}`}
-                      ref={(el) => {
-                        tabRefs.current[tab.id] = el;
-                      }}
-                      onClick={() => handleTabClick(tab.id)}
-                      className={`shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-sm transition-all duration-300 ${
-                        isActive
-                          ? "bg-[var(--tab-active-bg)] font-medium text-[var(--tab-active-text)] shadow-sm"
-                          : "text-[var(--tab-text)] hover:text-[var(--tab-hover)]"
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
+      </div>
+
+      {/* RIGHT ARROW - MOBILE ONLY */}
+      <button
+        onClick={() => scrollTabs("right")}
+        className="absolute right-0 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[var(--tabs-container)] shadow-md md:hidden"
+      >
+        <ChevronRight size={18} />
+      </button>
+    </div>
+  </motion.div>
+</div>
 
         <AnimatedSection delay={0.1}>
           {/* <div id="our-services" className="mb-14 scroll-mt-40 text-center"> */}
