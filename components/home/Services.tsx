@@ -5,6 +5,7 @@ import Image from "next/image";
 import AnimatedSection from "../Animations";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import SectionHeader from "../SectionHeader";
 
 const tabs = [
   { label: "All Categories", id: "core-services" },
@@ -190,15 +191,16 @@ export default function CoreServices() {
         </div>
 
         <AnimatedSection delay={0.1}>
-          <div id="our-services" className="mb-14 scroll-mt-40 text-center">
-            <h2 className="text-2xl font-semibold md:text-3xl">
-              Our Core Services
-            </h2>
-
-            <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--section-muted)]">
-              Engineering solutions to keep your operations running without
-              interruption.
-            </p>
+          {/* <div id="our-services" className="mb-14 scroll-mt-40 text-center"> */}
+            <div id="our-services"
+            className="flex justify-center text-center"
+            style={{ color: "var(--section-text)" }}
+          >
+             <SectionHeader
+                          title="Our Core Services"
+                          subtitle=" Engineering solutions to keep your operations running without
+              interruption."
+                        />
           </div>
         </AnimatedSection>
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
+import SectionHeader from '../SectionHeader';
 
 const projects = [
   {
@@ -211,12 +212,16 @@ export default function PortfolioSection() {
   return (
     <div className="portfolio-section bg-[var(--section-bg)] text-[var(--section-text)] transition-colors duration-500">
       {/* HEADER */}
-      <div className="text-center py-24">
-        <h1 className="text-6xl font-bold">Our Portfolio</h1>
-        <p className="text-[var(--section-muted)] font-bold text-xl mt-4">
-          Check Out Some Of Our Projects
-        </p>
-      </div>
+{/* HEADER */}
+<div
+  className="flex justify-center pt-16 pb-8 text-center sm:pt-20"
+  style={{ color: "var(--section-text)" }}
+>
+  <SectionHeader
+    title="Our Portfolio"
+    subtitle="Check Out Some Of Our Projects"
+  />
+</div>
 
       {/* SCENES */}
       {projects.map((project) => (

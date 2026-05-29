@@ -50,8 +50,8 @@ export default function Footer() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <InfoItem icon={<Mail size={18} />} text="info@gmail.com" />
-              <InfoItem icon={<MapPin size={18} />} text="Eko Hotel Ikeja Lagos Nigeria" />
-              <InfoItem icon={<Phone size={18} />} text="+9955442318" />
+              <InfoItem icon={<MapPin size={18} />} text="125, Ajakaye Street, Ikeja, Lagos, Nigeria." />
+              <InfoItem icon={<Phone size={18} />} text="+234 803 781 5523" />
             </div>
           </div>
 
