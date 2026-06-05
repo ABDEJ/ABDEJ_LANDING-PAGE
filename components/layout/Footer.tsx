@@ -8,6 +8,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { FiInstagram, FiFacebook, FiDribbble } from "react-icons/fi";
+import { useState } from "react";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -19,6 +20,60 @@ const quickLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+const [feedback, setFeedback] = useState<{
+  type: "success" | "error" | "";
+  text: string;
+}>({
+  type: "",
+  text: "",
+});
+
+const handleSubscribe = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!email.trim()) {
+    setFeedback({
+      type: "error",
+      text: "Please enter your email address.",
+    });
+    return;
+  }
+
+  setLoading(true);
+  setFeedback({ type: "", text: "" });
+
+  try {
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message);
+    }
+
+    setFeedback({
+      type: "success",
+      text: "Successfully subscribed to our newsletter.",
+    });
+
+    setEmail("");
+  } catch (error: any) {
+    setFeedback({
+      type: "error",
+      text: error.message || "Something went wrong.",
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <footer
@@ -90,28 +145,43 @@ export default function Footer() {
 
             <h3 className="mb-5 text-[20px] font-semibold">Newsletter</h3>
 
-            <form className="flex max-w-[280px] flex-col gap-3">
-              <input
-                type="email"
-                placeholder="Your Email Address"
-                className="h-14 rounded-md px-4 text-sm outline-none"
-                style={{
-                  background: "var(--input-bg)",
-                  border: "2px solid var(--input-border)",
-                  color: "var(--input-text)",
-                }}
-              />
+            <form onSubmit={handleSubscribe} className="flex max-w-[280px] flex-col gap-3">
+           <input
+  type="email"
+  placeholder="Your Email Address"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  required
+  className="h-14 rounded-md px-4 text-sm outline-none"
+  style={{
+    background: "var(--input-bg)",
+    border: "2px solid var(--input-border)",
+    color: "var(--input-text)",
+  }}
+/>
 
-              <button
-                type="submit"
-                className="h-11 w-fit rounded-md px-7 text-sm font-medium transition"
-                style={{
-                  background: "var(--button-bg)",
-                  color: "var(--button-text)",
-                }}
-              >
-                Sign Up
-              </button>
+          <button
+  type="submit"
+  disabled={loading}
+  className="h-11 w-fit rounded-md px-7 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60"
+  style={{
+    background: "var(--button-bg)",
+    color: "var(--button-text)",
+  }}
+>
+  {loading ? "Subscribing..." : "Sign Up"}
+</button>
+              {feedback.text && (
+  <div
+    className={`rounded-md px-3 py-2 text-sm ${
+      feedback.type === "success"
+        ? "bg-green-50 text-green-700 border border-green-200"
+        : "bg-red-50 text-red-700 border border-red-200"
+    }`}
+  >
+    {feedback.text}
+  </div>
+)}
             </form>
           </div>
         </div>
@@ -186,3 +256,4 @@ function SocialIcon({
     </Link>
   );
 }
+

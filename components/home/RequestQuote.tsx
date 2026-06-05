@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import AnimatedSection from "../Animations";
+import Link from "next/link";
 
 export default function RequestQuote() {
   return (
@@ -42,15 +43,21 @@ export default function RequestQuote() {
               that fits your budget and timeline.
             </p>
 
-            <button
-              className="mt-6 h-[56px] w-full rounded-[30px] sm:h-[64px] sm:w-[181px] transition hover:scale-[1.02]"
-              style={{
-                backgroundColor: "var(--button-bg)",
-                color: "var(--button-text)",
-              }}
-            >
-              Contact Us
-            </button>
+ <Link
+  href="/contact-us"
+  scroll={true}
+  onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+>
+  <button
+    className="mt-6 h-[56px] w-full rounded-[30px] sm:h-[64px] sm:w-[181px] transition hover:scale-[1.02]"
+    style={{
+      backgroundColor: "var(--button-bg)",
+      color: "var(--button-text)",
+    }}
+  >
+    Contact Us
+  </button>
+</Link>
           </div>
         </AnimatedSection>
       </div>

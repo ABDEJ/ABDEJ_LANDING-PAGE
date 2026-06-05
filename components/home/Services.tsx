@@ -90,19 +90,24 @@ export default function CoreServices() {
     return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!tabsWrapperRef.current) return;
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.innerWidth < 768) {
+      setIsTabsFixed(false);
+      return;
+    }
 
-      const tabsTop = tabsWrapperRef.current.getBoundingClientRect().top;
-      setIsTabsFixed(tabsTop <= 80);
-    };
+    if (!tabsWrapperRef.current) return;
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    const tabsTop = tabsWrapperRef.current.getBoundingClientRect().top;
+    setIsTabsFixed(tabsTop <= 80);
+  };
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   useEffect(() => {
     const activeButton = tabRefs.current[activeTab];
@@ -160,11 +165,11 @@ export default function CoreServices() {
       stiffness: 180,
       damping: 20,
     }}
-    className={`z-[999] flex justify-center transition-colors duration-300 ${
-      isTabsFixed
-        ? "fixed left-0 right-0 top-0 bg-[var(--fixed-tabs-bg)] px-2 py-3 backdrop-blur-md shadow-sm"
-        : "relative bg-transparent py-0"
-    }`}
+ className={`z-[999] flex justify-center transition-colors duration-300 ${
+  isTabsFixed
+    ? "md:fixed md:left-0 md:right-0 md:top-0 md:bg-[var(--fixed-tabs-bg)] md:px-2 md:py-3 md:backdrop-blur-md md:shadow-sm"
+    : "relative bg-transparent py-0"
+}`}
   >
     <div className="relative flex w-full max-w-6xl items-center">
 

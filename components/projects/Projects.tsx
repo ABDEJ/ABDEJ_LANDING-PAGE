@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import SectionHeader from '../SectionHeader';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -217,11 +218,14 @@ export default function PortfolioSection() {
   className="flex justify-center pt-16 pb-8 text-center sm:pt-20"
   style={{ color: "var(--section-text)" }}
 >
+ 
   <SectionHeader
     title="Our Portfolio"
     subtitle="Check Out Some Of Our Projects"
   />
 </div>
+
+
 
       {/* SCENES */}
       {projects.map((project) => (

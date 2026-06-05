@@ -12,6 +12,19 @@
   scrollbar-width: none;
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gear-spin {
+  animation: spin-slow 6s linear infinite;
+}
+
 html[data-theme="dark"] .navbar-section {
   --section-bg: #262626;
   --section-text: #ffffff;
@@ -406,7 +419,8 @@ html[data-theme="dark"] .footer-section {
   --input-text: #ffffff;
   --input-placeholder: rgba(255, 255, 255, 0.6);
 
-  
+   --button-bg: #FFD90C;
+   --button-text: #000000;
 
   --social-border: rgba(255, 255, 255, 0.2);
   --social-text: #ffffff;
