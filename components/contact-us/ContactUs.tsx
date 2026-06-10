@@ -256,7 +256,7 @@ export default function ContactUs() {
                   >
                     <div className="flex items-center gap-2">
                       <Mail size={16} />
-                      <span>info@company.com</span>
+                      <span>inquiries@abdejgroup.com</span>
                     </div>
 
                     <div className="flex items-center gap-2">

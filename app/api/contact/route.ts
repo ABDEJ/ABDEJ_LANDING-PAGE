@@ -115,8 +115,10 @@ const emailTemplate = ({
           <div class="message-box">${message}</div>
         </div>
 
-       <a 
-  href="mailto:${email}" 
+
+
+<a
+  href="mailto:${email}"
   style="
     display:inline-block;
     margin-top:22px;
@@ -127,7 +129,8 @@ const emailTemplate = ({
     text-decoration:none;
     border-radius:8px;
     font-size:14px;
-    border:1px solid #000;
+    mso-line-height-rule:exactly;
+    -webkit-text-fill-color:#000000;
   "
 >
   Reply to Sender
@@ -153,13 +156,15 @@ export async function POST(req: Request) {
       throw new Error("Missing email environment variables");
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+ const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: Number(process.env.EMAIL_PORT),
+  secure: process.env.EMAIL_SECURE === "true",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
     await transporter.sendMail({
       from: `"Abdej Contact" <${process.env.EMAIL_USER}>`,

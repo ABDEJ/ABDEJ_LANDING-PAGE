@@ -22,7 +22,7 @@
 }
 
 .gear-spin {
-  animation: spin-slow 6s linear infinite;
+  animation: spin-slow 3s linear infinite;
 }
 
 html[data-theme="dark"] .navbar-section {

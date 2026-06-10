@@ -20,12 +20,14 @@ export async function POST(req: Request) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  host: process.env.EMAIL_HOST,
+  port: Number(process.env.EMAIL_PORT),
+  secure: process.env.EMAIL_SECURE === "true",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
     // Send notification to Abdej admin
 await transporter.sendMail({
@@ -78,23 +80,24 @@ await transporter.sendMail({
           <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
         </div>
 
-        <!-- CTA -->
-        <a
-          href="mailto:${email}"
-          style="
-            display:inline-block;
-            margin-top:22px;
-            padding:12px 18px;
-            background:#FFD700;
-            color:#000;
-            font-weight:bold;
-            text-decoration:none;
-            border-radius:8px;
-            font-size:14px;
-          "
-        >
-          Reply to Subscriber
-        </a>
+       <a
+  href="mailto:${email}"
+  style="
+    display:inline-block;
+    margin-top:22px;
+    padding:12px 18px;
+    background:#FFD700;
+    color:#000000 !important;
+    font-weight:bold;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:14px;
+    mso-line-height-rule:exactly;
+    -webkit-text-fill-color:#000000;
+  "
+>
+  Reply to Subscriber
+</a>
 
       </div>
 

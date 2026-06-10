@@ -104,7 +104,7 @@ const handleSubscribe = async (e: React.FormEvent) => {
             </h3>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <InfoItem icon={<Mail size={18} />} text="info@gmail.com" />
+              <InfoItem icon={<Mail size={18} />} text="inquiries@abdejgroup.com" />
               <InfoItem icon={<MapPin size={18} />} text="125, Ajakaye Street, Ikeja, Lagos, Nigeria." />
               <InfoItem icon={<Phone size={18} />} text="+234 803 781 5523" />
             </div>
@@ -137,11 +137,11 @@ const handleSubscribe = async (e: React.FormEvent) => {
 
           {/* RIGHT */}
           <div>
-            <div className="mb-5 flex items-center gap-3">
+            {/* <div className="mb-5 flex items-center gap-3">
               <SocialIcon href="#" icon={<FiInstagram size={16} />} />
               <SocialIcon href="#" icon={<FiFacebook size={16} />} />
               <SocialIcon href="#" icon={<FiDribbble size={16} />} />
-            </div>
+            </div> */}
 
             <h3 className="mb-5 text-[20px] font-semibold">Newsletter</h3>
 

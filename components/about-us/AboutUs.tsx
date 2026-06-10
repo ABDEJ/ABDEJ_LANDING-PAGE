@@ -78,14 +78,14 @@ const coreValues: CardItem[] = [
 function SectionHeading({ title }: { title: string }) {
   return (
     <div className="mb-8 flex items-center justify-center gap-2 text-center">
-      <Image
-        src="/AboutUsIcons/Gear.svg"
-        alt="Gear Icon"
-        width={65}
-        height={65}
-        className="-mr-1"
-        style={{ filter: "var(--icon-filter, none)" }}
-      />
+    <Image
+      src="/AboutUsIcons/Gear.svg"
+      alt="Gear Icon"
+      width={65}
+      height={65}
+      className="gear-spin"
+      style={{ filter: "var(--map-filter)" }}
+    />
       <h2
         className="text-lg font-semibold sm:text-xl md:text-2xl"
         style={{ color: "var(--section-text)" }}
