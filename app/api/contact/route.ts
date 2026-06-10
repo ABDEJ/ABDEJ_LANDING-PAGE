@@ -18,7 +18,7 @@ const emailTemplate = ({
   company,
   message,
 }: ContactPayload) => {
- const logoUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/logo.png`;
+
 
   return `
   <!DOCTYPE html>
@@ -100,7 +100,7 @@ const emailTemplate = ({
     <div class="container">
 
       <div class="header">
-        <img src="${logoUrl}" class="logo" alt="Abdej Logo" />
+        <img src="https://abdejgroup.com/logo.png" class="logo" alt="Abdej Logo" />
         <h2>New Contact Message</h2>
       </div>
 

@@ -43,7 +43,7 @@ await transporter.sendMail({
       <!-- HEADER -->
       <div style="background:#000;padding:26px;text-align:center;">
         <img
-          src="${process.env.NEXT_PUBLIC_BASE_URL}/logo.png"
+          src=" https://abdejgroup.com/logo.png"
           alt="Abdej Logo"
           style="max-width:140px;height:auto;display:block;margin:0 auto 12px;"
         />
