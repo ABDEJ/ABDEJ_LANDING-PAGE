@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function RequestQuote() {
   return (
-    <section
+    <section id="request-quote"
       className="request-quote-section py-12 sm:py-14 lg:py-16"
       style={{ backgroundColor: "var(--section-bg)" }}
     >

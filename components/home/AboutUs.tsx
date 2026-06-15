@@ -107,20 +107,26 @@ export default function AboutUs() {
               className="lg:pl-16"
               style={{ color: "var(--section-text)" }}
             >
-              <div className="lg:-ml-36">
-                <p
-                  className="text-sm leading-7 sm:text-base sm:leading-8"
-                  style={{ color: "var(--section-muted)" }}
-                >
-                  Abdej Nigeria Limited. (Abdej) LTD is an indigenous company
-                  incorporated in 2012. We are driven by the need for high
-                  throughput innovations in the Nigerian power sector. We provide
-                  top notch tailored solutions to meet the ever growing demand
-                  for different forms of robust, clean and engineering solutions
-                  in Nigeria. Our clients cut across small, medium and large
-                  scale businesses.
-                </p>
-              </div>
+               <div className="lg:-ml-36">
+  <p
+    className="text-sm leading-7 sm:text-base sm:leading-8"
+    style={{ color: "var(--section-muted)" }}
+  >
+    Abdej Nigeria Limited (Abdej Ltd){" "}
+
+    <span className="italic font-extrabold text-[var(--section-text)] text-base mr-2">
+      RC: 9180516
+    </span>
+
+    is the successor to Abdej Nigeria Enterprises. It is an indigenous
+    company incorporated in 2012. We are driven by the need for high
+    throughput innovations in the Nigerian power sector. As a duly
+    incorporated limited liability company, we provide top notch tailored
+    solutions to meet the ever growing demand for different forms of
+    robust, clean and engineering solutions in Nigeria. Our clients cut
+    across small, medium and large scale businesses.
+  </p>
+</div>
 
               <div className="mt-8 grid gap-6 md:grid-cols-[156px_1fr] md:items-start">
                 {/* Experience Card */}

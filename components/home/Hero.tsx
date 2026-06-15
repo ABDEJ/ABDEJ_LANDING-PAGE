@@ -81,7 +81,20 @@ export default function HeroCarousel() {
 
           <AnimatedSection delay={0.3}>
             <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
-             <motion.button
+       <motion.button
+  onClick={() => {
+    const el = document.getElementById("request-quote");
+   if (!el) return;
+
+  const yOffset = -90; // adjust based on navbar height
+  const y =
+    el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+}}
   whileHover={{ y: -4, scale: 1.03 }}
   whileTap={{ scale: 0.97 }}
   transition={{ type: "spring", stiffness: 300, damping: 18 }}
@@ -89,9 +102,7 @@ export default function HeroCarousel() {
 >
   Request a Quote
 
-  <ArrowRight
-    className="ml-2 h-5 w-5 text-current transition-transform duration-300 group-hover:translate-x-1"
-  />
+  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
 </motion.button>
 
  <motion.button

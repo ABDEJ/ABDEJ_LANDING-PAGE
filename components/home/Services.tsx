@@ -15,31 +15,61 @@ const tabs = [
   { label: "About Us", id: "about-us" },
 ];
 
-const services = [
+const services = 
+[
   {
-    title: "Generator Overhauling, Maintenance & Repairs",
-    desc: "Complete servicing, fault diagnosis, and repairs for all generator types to guarantee consistent performance.",
+    title:
+      "Sales, Servicing, and Maintenance of Generators, Industrial Engines, and Marine Engines – Caterpillar, Perkins, and Cummins Brands",
+    desc:
+      "Expert sales, preventive maintenance, diagnostics, and repairs for Caterpillar, Perkins, and Cummins generators, industrial engines, and marine engines to ensure maximum reliability and performance.",
   },
   {
-    title: "Power System Design & Optimization",
-    desc: "We design and optimize power systems to improve efficiency, reduce downtime, and ensure stable energy supply.",
+    title:
+      "Sales, Servicing and Maintenance of Caterpillar Earth-Moving Equipment",
+    desc:
+      "Professional sales, maintenance, troubleshooting, and repair services for Caterpillar earth-moving equipment, helping construction and mining operations minimize downtime and maximize productivity.",
+  },
+  {
+    title:
+      "Power System Design, Optimization, & Electrical Applications",
+    desc:
+      "We provide power system design, load analysis, optimization, and electrical engineering solutions that improve energy efficiency, reliability, and operational performance.",
+  },
+  {
+    title:
+      "Generator Synchronization and Automatic Transfer Switch (ATS) Installation",
+    desc:
+      "Specialized generator synchronization and ATS installation services designed to ensure seamless power transitions, load sharing, and uninterrupted operations.",
+  },
+  {
+    title:
+      "Overhauling, Maintenance, and Repairs of Generator Prime Movers",
+    desc:
+      "Comprehensive overhauling, preventive maintenance, and repair services for generator prime movers to restore efficiency, extend equipment lifespan, and prevent costly failures.",
   },
   {
     title: "Components Repairs & Sourcing",
-    desc: "We repair damaged components and source high-quality parts to extend the lifespan of your equipment.",
+    desc:
+      "Reliable component repair and genuine parts sourcing services for generators and industrial equipment, ensuring optimal performance and long-term durability.",
   },
   {
-    title: "Custom Fabrication",
-    desc: "We fabricate hoses, pipelines, tanks, and other custom-engineered solutions built to meet your exact specifications.",
+    title: "Custom Fabrication of Hoses, Pipelines, and Tanks",
+    desc:
+      "Precision fabrication of industrial hoses, pipelines, storage tanks, and custom-engineered solutions tailored to meet your operational and industry requirements.",
+  },
+  {
+    title: "Technical Consultancy and Training",
+    desc:
+      "Industry-focused technical consultancy and hands-on training programs that equip teams with the knowledge and skills to operate, maintain, and optimize industrial equipment effectively.",
   },
 ];
 
 const partners = [
   { name: "Gt bank", logo: "/OurPartners/gtbank.svg" },
   { name: "Zenith bank", logo: "/OurPartners/zenithbank.svg" },
-  { name: "Nigerian Stock Exchange", logo: "/OurPartners/nse.svg" },
+  { name: "Nigerian Stock Exchange", logo: "/OurPartners/nse.png" },
   { name: "Poly product", logo: "/OurPartners/polygroup.svg" },
-  { name: "Viathan Nigeria Limited", logo: "/OurPartners/viathan.svg" },
+  { name: "Viathan Nigeria Limited", logo: "/OurPartners/viathan.png" },
   { name: "Cappa & D'Alberto Nigeria Limited", logo: "/OurPartners/Cappa.svg" },
 ];
 
@@ -240,13 +270,13 @@ useEffect(() => {
                         />
           </div>
         </AnimatedSection>
-
+{/* 
         <div className="grid gap-x-16 gap-y-10 md:grid-cols-2">
           {services.map((service, index) => (
             <AnimatedSection key={index} delay={0.15 + index * 0.1}>
-              <div className="flex gap-4">
-                <div className="mt-1">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full">
+          <div className="border-b border-[var(--service-border)] pb-6">
+  <div className="flex items-start gap-4">
+    <div className="mt-1 shrink-0">
                     <Image
                       src="/check-dark-mode.svg"
                       alt="Check"
@@ -265,18 +295,60 @@ useEffect(() => {
                 </div>
 
                 <div className="w-full border-b border-[var(--service-border)] pb-6">
-                  <h3 className="text-sm font-medium md:text-base">
+                 <h3 className="text-base font-semibold leading-snug md:text-lg">
                     {service.title}
                   </h3>
-
-                  <p className="mt-2 text-xs leading-relaxed text-[var(--section-muted)] md:text-sm">
-                    {service.desc}
-                  </p>
+<p className="mt-3 text-sm leading-7 text-[var(--section-muted)] md:text-[15px]">
+  {service.desc}
+</p>
                 </div>
               </div>
             </AnimatedSection>
           ))}
+        </div> */}
+
+  <div className="grid gap-x-16 gap-y-0 md:grid-cols-2">
+  {services.map((service, index) => (
+    <AnimatedSection key={index} delay={0.12 + index * 0.05}>
+      <div className="h-full border-b border-[var(--service-border)] py-8">
+        <div className="flex h-full items-start gap-4">
+          
+          {/* ICON */}
+          <div className="mt-1 shrink-0">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full">
+              <Image
+                src="/check-dark-mode.svg"
+                alt="Check"
+                width={32}
+                height={32}
+                className="hidden dark-check-icon"
+              />
+              <Image
+                src="/check-light-mode.svg"
+                alt="Check"
+                width={32}
+                height={32}
+                className="hidden light-check-icon"
+              />
+            </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="flex-1 min-w-0">
+            <h3 className="text-base font-semibold leading-relaxed md:text-lg">
+              {service.title}
+            </h3>
+
+            <p className="mt-3 text-sm leading-7 text-[var(--section-muted)] md:text-[15px]">
+              {service.desc}
+            </p>
+          </div>
+
         </div>
+      </div>
+    </AnimatedSection>
+  ))}
+</div>
 
         <AnimatedSection delay={0.55}>
           <div className="mt-14 flex justify-center">
@@ -313,8 +385,8 @@ useEffect(() => {
                   <Image
                     src={partner.logo}
                     alt={partner.name}
-                    width={140}
-                    height={52}
+                    width={200}
+                    height={60}
                     className="h-full w-full object-contain"
                   />
                 </div>
