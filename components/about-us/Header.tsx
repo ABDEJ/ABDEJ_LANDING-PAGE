@@ -44,67 +44,67 @@ export default function AboutUs() {
         </AnimatedSection>
 
 
-            <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-[480px_1fr] lg:gap-16">
-          {/* IMAGE SECTION */}
-          <div className="lg:ml-20">
-            {/* MOBILE / TABLET */}
-            <div className="grid grid-cols-2 gap-4 lg:hidden items-stretch">
-
-              <div className="relative w-full aspect-[298/447] overflow-hidden rounded-[15px]">
-                 <AnimatedSection direction="left" delay={0.15}>
-                <Image
-                  src="/AboutUsEngineer.svg"
-                  alt="worker"
-                  fill
-                  className="object-cover object-top"
-                  sizes="50vw"
-                  priority
-                />
-                              </AnimatedSection>
-              </div>
-
-
-              <div className="relative w-full aspect-[314/447] overflow-hidden rounded-[15px]">
-                <AnimatedSection direction="right" delay={0.2}>
-                <Image
-                  src="/AboutUsEngineer2.svg"
-                  alt="worker"
-                  fill
-                  className="object-cover object-top"
-                  sizes="50vw"
-                />
-                   </AnimatedSection>
-              </div>           
-            </div>
-
-            {/* DESKTOP */}
-            <div className="relative hidden lg:flex lg:w-[620px] items-start gap-6">
-
-              <div className="relative w-[298px] h-[447px] rounded-[15px] overflow-hidden">
-                <AnimatedSection direction="left" delay={0.15}>
-                <Image
-                  src="/AboutUsEngineer.svg"
-                  alt="worker"
-                  fill
-                  className="object-contain object-top"
-                  sizes="298px"
-                />
-                </AnimatedSection>
-              </div>
-
-              <div className="relative w-[314px] h-[447px] mt-16 rounded-[15px] overflow-hidden">
-                <AnimatedSection direction="right" delay={0.25}>
-                <Image
-                  src="/AboutUsEngineer2.svg"
-                  alt="worker"
-                  fill
-                  className="object-contain object-top"
-                  sizes="314px"
-                />
-                </AnimatedSection>
-              </div>
-            </div>
-          </div>
+              <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-[480px_1fr] lg:gap-16">
+                            {/* IMAGE SECTION */}
+                            <div className="lg:ml-20">
+                              {/* MOBILE / TABLET */}
+                              <div className="grid grid-cols-2 gap-4 lg:hidden items-stretch">
+                  
+                                <div className="relative w-full aspect-[298/447] overflow-hidden rounded-[15px]">
+                                   <AnimatedSection direction="left" delay={0.15}>
+                                  <Image
+                                    src="/AboutUsEngineer.svg"
+                                    alt="worker"
+                                    fill
+                                    className="object-cover object-top"
+                                    sizes="50vw"
+                                    priority
+                                  />
+                                                </AnimatedSection>
+                                </div>
+                  
+                  
+                                <div className="relative w-full aspect-[314/447] overflow-hidden rounded-[15px]">
+                                  <AnimatedSection direction="right" delay={0.2}>
+                                  <Image
+                                    src="/AboutUsEngineer2.svg"
+                                    alt="worker"
+                                    fill
+                                    className="object-cover object-top"
+                                    sizes="50vw"
+                                  />
+                                     </AnimatedSection>
+                                </div>           
+                              </div>
+                  
+          
+                      {/* Desktop */}
+                      <div className="relative hidden h-[720px] w-full lg:block lg:w-[480px]">
+                        <AnimatedSection direction="left" delay={0.15}>
+                          <div className="absolute -left-16 top-0 overflow-hidden rounded-[15px]">
+                            <Image
+                              src="/AboutUsEngineer.svg"
+                              alt="worker"
+                              width={298}
+                              height={447}
+                              className="h-[447px] w-[298px] rounded-[15px] object-cover"
+                            />
+                          </div>
+                        </AnimatedSection>
+          
+                        <AnimatedSection direction="right" delay={0.25}>
+                          <div className="absolute left-[260px] top-[260px] overflow-hidden rounded-[15px]">
+                            <Image
+                              src="/AboutUsEngineer2.svg"
+                              alt="worker"
+                              width={314}
+                              height={447}
+                              className="h-[447px] w-[314px] rounded-[15px] object-cover"
+                            />
+                          </div>
+                        </AnimatedSection>
+                      </div>
+                    </div>
 
           {/* Content */}
           <AnimatedSection direction="left" delay={0.25}>
