@@ -19,13 +19,13 @@ const services =
 [
   {
     title:
-      "Sales, Servicing, and Maintenance of Generators, Industrial Engines, and Marine Engines – Caterpillar, Perkins, and Cummins Brands",
+      "Sales, Servicing, & Maintenance of Generators, Industrial Engines, & Marine Engines – Caterpillar, Perkins, & Cummins Brands",
     desc:
       "Expert sales, preventive maintenance, diagnostics, and repairs for Caterpillar, Perkins, and Cummins generators, industrial engines, and marine engines to ensure maximum reliability and performance.",
   },
   {
     title:
-      "Sales, Servicing and Maintenance of Caterpillar Earth-Moving Equipment",
+      "Sales, Servicing & Maintenance of Caterpillar Earth-Moving Equipment",
     desc:
       "Professional sales, maintenance, troubleshooting, and repair services for Caterpillar earth-moving equipment, helping construction and mining operations minimize downtime and maximize productivity.",
   },
@@ -37,13 +37,13 @@ const services =
   },
   {
     title:
-      "Generator Synchronization and Automatic Transfer Switch (ATS) Installation",
+      "Generator Synchronization & Automatic Transfer Switch (ATS) Installation",
     desc:
       "Specialized generator synchronization and ATS installation services designed to ensure seamless power transitions, load sharing, and uninterrupted operations.",
   },
   {
     title:
-      "Overhauling, Maintenance, and Repairs of Generator Prime Movers",
+      "Overhauling, Maintenance, & Repairs of Generator Prime Movers",
     desc:
       "Comprehensive overhauling, preventive maintenance, and repair services for generator prime movers to restore efficiency, extend equipment lifespan, and prevent costly failures.",
   },
@@ -53,12 +53,12 @@ const services =
       "Reliable component repair and genuine parts sourcing services for generators and industrial equipment, ensuring optimal performance and long-term durability.",
   },
   {
-    title: "Custom Fabrication of Hoses, Pipelines, and Tanks",
+    title: "Custom Fabrication of Hoses, Pipelines, & Tanks",
     desc:
       "Precision fabrication of industrial hoses, pipelines, storage tanks, and custom-engineered solutions tailored to meet your operational and industry requirements.",
   },
   {
-    title: "Technical Consultancy and Training",
+    title: "Technical Consultancy & Training",
     desc:
       "Industry-focused technical consultancy and hands-on training programs that equip teams with the knowledge and skills to operate, maintain, and optimize industrial equipment effectively.",
   },

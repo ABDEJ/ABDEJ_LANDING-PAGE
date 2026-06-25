@@ -27,12 +27,17 @@ export const metadata: Metadata = {
     "generator repair near me",
   ],
 
-  icons: {
-    icon: [
-      { url: "/logo.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: "/logo.png",
-  },
+// icons: {
+//     icon: [
+//       { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+//       { url: "/logo.png", sizes: "32x32", type: "image/png" },
+//       { url: "/logo.png", sizes: "192x192", type: "image/png" }, 
+//       { url: "/logo.png", sizes: "512x512", type: "image/png" }, 
+//     ],
+//     apple: [
+//       { url: "/logo.png", sizes: "180x180", type: "image/png" }, 
+//     ],
+//   },
 
   openGraph: {
     title: "Reliable Generator & Power Solutions in Lagos | ABDEJ",

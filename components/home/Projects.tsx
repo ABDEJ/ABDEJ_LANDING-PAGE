@@ -10,13 +10,13 @@ const projects = [
     image: "/tower.svg",
   },
   {
-    title: "Generator Overhaul Facility",
-    desc: "Advanced maintenance and inspection solutions for industrial reliability.",
+    title: "Generator and Engine Overhaul ",
+    desc: "Full rebuild and restoration service for diesel generators and engines. Restore power, cut fuel use, eliminate downtime.",
     image: "/genOverhaul.svg",
   },
   {
-    title: "Engine Component Repair & Replacement",
-    desc: "Engineered replacement options and precision repair service.",
+    title: "Generator and Engine components repair and replacement",
+    desc: "Fast repair + OEM replacement for all generator and engine parts. Tested components, expert fitting, restored reliability",
     image: "/engineRepairs.svg",
   },
   {
@@ -59,10 +59,10 @@ export default function ProjectsGrid() {
                 </div>
 
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h4 className="text-xl font-semibold leading-tight text-white">
+                  <h4 className="text-xl font-semibold leading-tight text-white transition duration-500 group-hover:text-primary">
                     {project.title}
                   </h4>
-                  <p className="mt-2 text-sm leading-5 text-white/75">
+                  <p className="mt-2 text-sm font-bold leading-5 text-secondary/75">
                     {project.desc}
                   </p>
                 </div>

@@ -13,7 +13,6 @@ import { useState } from "react";
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about-us" },
-  { name: "Our Services", href: "/services" },
   { name: "Projects", href: "/projects" },
   { name: "Contact Us", href: "/contact-us" },
 ];
