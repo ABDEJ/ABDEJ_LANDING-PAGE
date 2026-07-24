@@ -12,9 +12,18 @@ import { useRouter } from "next/navigation";
 
 
 const images = [
-  "/HeroImage1.svg",
-  "/HeroImage2.svg",
-  "/PipelineFabrication.svg",
+  "/heroImage1.jpg",
+  "/heroImage2.jpg",
+  "/heroImage3.jpg",
+  "/heroImage4.jpg",
+  "/heroImage5.jpg",
+  "/heroImage6.jpg",
+  "/heroImage7.jpg",
+  "/heroImage8.jpg",
+  "/heroImage9.jpg",
+  
+  
+
 ];
 
 export default function HeroCarousel() {
@@ -150,13 +159,21 @@ export default function HeroCarousel() {
                       }
                 }
               >
-                {extendedImages.map((img, i) => {
+                {/* {extendedImages.map((img, i) => {
                   const distance = Math.abs(i - index);
 
                   return (
                     <motion.div
                       key={`${img}-${i}`}
-                      className="relative mx-2 h-[360px] min-w-[75%] flex-shrink-0 overflow-hidden rounded-2xl"
+                     className="
+relative
+mx-2
+aspect-[16/9]
+min-w-[75%]
+overflow-hidden
+rounded-3xl
+"
+
                       animate={{
                         scale: distance === 0 ? 1 : 0.85,
                         opacity: distance > 2 ? 0.3 : 1,
@@ -174,6 +191,43 @@ export default function HeroCarousel() {
                       />
 
                       <div className="absolute inset-0 bg-black/10" />
+                    </motion.div>
+                  );
+                })} */}
+
+                {extendedImages.map((img, i) => {
+                  const distance = Math.abs(i - index);
+
+                  return (
+                    <motion.div
+                      key={`${img}-${i}`}
+                      className="
+                        relative
+                        mx-2
+                        aspect-[16/9]
+                        min-w-[75%]
+                        overflow-hidden
+                        rounded-[32px] md:rounded-[48px] /* Updated for a larger, modern radius */
+                      "
+                      animate={{
+                        scale: distance === 0 ? 1 : 0.85,
+                        opacity: distance > 2 ? 0.3 : 1,
+                      }}
+                      transition={{ duration: isResetting ? 0 : 0.6 }}
+                    >
+                      <Image
+                        src={img}
+                        alt="carousel"
+                        fill
+                        placeholder="empty"
+                        sizes="75vw"
+                        priority={i === 1}
+                        // Added rounding directly to image to prevent Safari corner-bleed
+                        className="object-cover rounded-[32px] md:rounded-[48px]" 
+                      />
+
+                      {/* Added rounding to the overlay as well */}
+                      <div className="absolute inset-0 bg-black/10 rounded-[32px] md:rounded-[48px]" />
                     </motion.div>
                   );
                 })}
