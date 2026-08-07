@@ -445,8 +445,8 @@ export default function WhyChooseUs() {
             }}
           >
             <Image
-              src="/logo.png"
-              alt="Abdej Logo"
+              src="/brand/abdej-icon.png"
+              alt="ABDEJ logo mark"
               width={110}
               height={110}
               className="object-contain"

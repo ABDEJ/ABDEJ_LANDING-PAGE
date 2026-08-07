@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Settings, Menu, X, Moon, SunMedium, ArrowRight } from "lucide-react";
+import { Menu, X, Moon, SunMedium, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -34,21 +34,28 @@ export default function Navbar() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+  const logoSrc =
+    theme === "dark"
+      ? "/brand/abdej-logo-dark.png"
+      : "/brand/abdej-logo-light.png";
+
   return (
 <nav className="navbar-section sticky top-0 z-50 bg-[var(--section-bg)] text-[var(--section-text)] backdrop-blur-md transition-colors duration-500">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-auto md:py-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.svg"
-            alt="ABDEJ Logo"
-            width={80}
-            height={150}
-            priority
-            className="h-auto w-[68px] sm:w-[80px] md:w-[100px] lg:w-[120px]"
-          />
-        </Link>
-
+  <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 md:h-20 lg:px-8">
+<Link
+  href="/"
+  aria-label="ABDEJ Nigeria Limited home"
+  className="flex h-16 w-[158px] shrink-0 items-center sm:w-[184px] md:h-20 md:w-[218px]"
+>
+  <Image
+    src={logoSrc}
+    alt="ABDEJ Nigeria Limited"
+    width={520}
+    height={148}
+    priority
+    className="h-auto max-h-12 w-full object-contain md:max-h-14"
+  />
+</Link>
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-bold">
           {links.map((link) => (

@@ -10,7 +10,7 @@ const nextConfig = {
     ],
   },
   allowedDevOrigins: ["http://localhost:3001",
-    "10.142.128.144"
+    "10.193.204.144"
   ],
   async headers(){
     return [

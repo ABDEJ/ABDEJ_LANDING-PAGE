@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   Mail,
@@ -87,9 +88,26 @@ const handleSubscribe = async (e: React.FormEvent) => {
 
           {/* LEFT */}
           <div>
-            <h2 className="text-[46px] font-bold leading-none tracking-[-0.03em]">
-              Abdej
-            </h2>
+            <Link
+              href="/"
+              aria-label="ABDEJ Nigeria Limited home"
+              className="block w-[220px] max-w-full sm:w-[260px]"
+            >
+              <Image
+                src="/brand/abdej-logo-dark.png"
+                alt="ABDEJ Nigeria Limited"
+                width={520}
+                height={148}
+                className="theme-logo-dark h-auto w-full object-contain"
+              />
+              <Image
+                src="/brand/abdej-logo-light.png"
+                alt="ABDEJ Nigeria Limited"
+                width={520}
+                height={171}
+                className="theme-logo-light h-auto w-full object-contain"
+              />
+            </Link>
 
             <p
               className="mt-4 text-[15px]"

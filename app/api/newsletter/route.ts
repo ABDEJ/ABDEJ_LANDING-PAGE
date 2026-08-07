@@ -19,6 +19,10 @@ export async function POST(req: Request) {
       throw new Error("Missing email environment variables");
     }
 
+    const baseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL || "https://abdejgroup.com";
+    const brandLogoUrl = `${baseUrl}/brand/abdej-logo-dark.png`;
+
     const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: Number(process.env.EMAIL_PORT),
@@ -43,9 +47,9 @@ await transporter.sendMail({
       <!-- HEADER -->
       <div style="background:#000;padding:26px;text-align:center;">
         <img
-          src=" https://abdejgroup.com/logo.png"
+          src="${brandLogoUrl}"
           alt="Abdej Logo"
-          style="max-width:140px;height:auto;display:block;margin:0 auto 12px;"
+          style="max-width:220px;height:auto;display:block;margin:0 auto 12px;"
         />
 
         <h2 style="color:#FFD700;margin:0;font-size:18px;letter-spacing:1px;">
@@ -120,9 +124,9 @@ await transporter.sendMail({
     <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto;">
       <div style="background:#000;padding:24px;text-align:center;">
         <img
-          src="${process.env.NEXT_PUBLIC_BASE_URL}/logo.png"
+          src="${brandLogoUrl}"
           alt="Abdej Logo"
-          style="max-width:180px;height:auto;display:block;margin:0 auto 16px;"
+          style="max-width:240px;height:auto;display:block;margin:0 auto 16px;"
         />
 
         <h1 style="color:#FFD700;margin:0;">

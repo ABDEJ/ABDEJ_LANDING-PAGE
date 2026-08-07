@@ -448,6 +448,16 @@ html[data-theme="light"] .footer-section {
   --social-text: #111111;
 }
 
+html[data-theme="dark"] .footer-section .theme-logo-dark,
+html[data-theme="light"] .footer-section .theme-logo-light {
+  display: block;
+}
+
+html[data-theme="dark"] .footer-section .theme-logo-light,
+html[data-theme="light"] .footer-section .theme-logo-dark {
+  display: none;
+}
+
 /* ================= PORTFOLIO / PROJECTS SECTION ================= */
 
 html[data-theme="dark"] .portfolio-section {

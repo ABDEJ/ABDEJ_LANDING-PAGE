@@ -19,6 +19,9 @@ const emailTemplate = ({
   message,
 }: ContactPayload) => {
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://abdejgroup.com";
+  const brandLogoUrl = `${baseUrl}/brand/abdej-logo-dark.png`;
 
   return `
   <!DOCTYPE html>
@@ -51,7 +54,8 @@ const emailTemplate = ({
       }
 
       .logo {
-        width: 120px;
+        width: 220px;
+        max-width: 100%;
         margin-bottom: 10px;
       }
 
@@ -100,7 +104,7 @@ const emailTemplate = ({
     <div class="container">
 
       <div class="header">
-        <img src="https://abdejgroup.com/logo.png" class="logo" alt="Abdej Logo" />
+        <img src="${brandLogoUrl}" class="logo" alt="Abdej Logo" />
         <h2>New Contact Message</h2>
       </div>
 
