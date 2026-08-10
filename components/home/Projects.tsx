@@ -47,7 +47,7 @@ export default function ProjectsGrid() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <AnimatedSection key={index} delay={0.15 + index * 0.1}>
-              <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#1A1D20]">
+              <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A]">
                 <div className="relative h-[280px]">
                   <Image
                     src={project.image}

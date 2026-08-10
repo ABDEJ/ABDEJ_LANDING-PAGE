@@ -52,7 +52,7 @@ await transporter.sendMail({
           style="max-width:220px;height:auto;display:block;margin:0 auto 12px;"
         />
 
-        <h2 style="color:#FFD700;margin:0;font-size:18px;letter-spacing:1px;">
+        <h2 style="color:#FFC100;margin:0;font-size:18px;letter-spacing:1px;">
           NEW NEWSLETTER SUBSCRIPTION
         </h2>
       </div>
@@ -67,7 +67,7 @@ await transporter.sendMail({
         <!-- EMAIL CARD -->
         <div style="
           background:#f9fafb;
-          border-left:5px solid #FFD700;
+          border-left:5px solid #FFC100;
           padding:18px;
           border-radius:10px;
           margin-bottom:20px;
@@ -90,7 +90,7 @@ await transporter.sendMail({
     display:inline-block;
     margin-top:22px;
     padding:12px 18px;
-    background:#FFD700;
+    background:#FFC100;
     color:#000000 !important;
     font-weight:bold;
     text-decoration:none;
@@ -129,7 +129,7 @@ await transporter.sendMail({
           style="max-width:240px;height:auto;display:block;margin:0 auto 16px;"
         />
 
-        <h1 style="color:#FFD700;margin:0;">
+        <h1 style="color:#FFC100;margin:0;">
           ABDEJ NEWSLETTER
         </h1>
       </div>

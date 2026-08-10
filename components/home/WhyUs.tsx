@@ -31,7 +31,7 @@
 
 // // export default function WhyChooseUs() {
 // //   return (
-// //     <section className="bg-[#1A1D20] py-20">
+// //     <section className="bg-[#0A0A0A] py-20">
 // //       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 // //         <AnimatedSection direction="right">
 // //           <div className="mb-10 flex justify-center">

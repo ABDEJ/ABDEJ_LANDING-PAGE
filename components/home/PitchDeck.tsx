@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+
+const profilePdfUrl = "/profile/abdej-company-profile.pdf";
 
 export default function PitchDeckCTA() {
   return (
@@ -27,23 +30,37 @@ export default function PitchDeckCTA() {
               businesses.
             </p>
 
-            <button
-              className="mt-6 flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[240px] md:h-[64px] md:w-[290px]"
-              style={{
-                backgroundColor: "var(--button-bg)",
-                color: "var(--button-text)",
-              }}
-            >
-              <span className="flex items-center gap-2">
-                Download Pitchdeck
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={profilePdfUrl}
+                download="ABDEJ-Company-Profile.pdf"
+                className="flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[240px] md:h-[64px] md:w-[290px]"
+                style={{
+                  backgroundColor: "var(--button-bg)",
+                  color: "var(--button-text)",
+                }}
+              >
+                Download Profile
                 <Image
                   src="/DownloadIcon.svg"
                   width={20}
                   height={20}
-                  alt="Download"
+                  alt=""
+                  aria-hidden="true"
                 />
-              </span>
-            </button>
+              </a>
+
+              <Link
+                href="/company-profile"
+                className="flex h-[56px] w-full items-center justify-center rounded-[30px] border font-medium transition hover:scale-[1.02] sm:h-[60px] sm:w-[180px] md:h-[64px]"
+                style={{
+                  borderColor: "var(--button-bg)",
+                  color: "var(--card-text)",
+                }}
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
         </div>
       </div>

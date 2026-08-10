@@ -149,7 +149,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`overflow-hidden border-t border-white/10 bg-[#1A1D20] transition-all duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-[#000000] transition-all duration-300 md:hidden ${
           isOpen ? "max-h-[500px] py-4" : "max-h-0 py-0"
         }`}
       >

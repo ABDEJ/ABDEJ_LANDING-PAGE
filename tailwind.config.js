@@ -23,12 +23,12 @@ module.exports = {
     extend: {
       colors: {
         primary: '#FAFAFA',
-        secondary: '#FFD90C',
+        secondary: '#FFC100',
 
         dark: {
-          DEFAULT: '#1A1A1A',
-          card: '#222222',
-          section: '#2A2A2A',
+          DEFAULT: '#000000',
+          card: '#0A0A0A',
+          section: '#000000',
         },
 
         muted: '#6B7280',

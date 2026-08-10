@@ -371,8 +371,9 @@ export default function HeroCarousel() {
             <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl md:text-7xl">
               <TypewriterText
                 text="Engineering Power. Delivering Reliability."
-                speed={35}
-                pauseAfterComplete={5000}
+                speed={70}
+                pauseAfterComplete={3500}
+                loop
                 className="block"
               />
             </h1>

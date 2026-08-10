@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import SectionHeader from "../SectionHeader";
 import AnimatedSection from "../Animations";
 import { Download } from "lucide-react";
 import { motion } from "framer-motion";
+
+const profilePdfUrl = "/profile/abdej-company-profile.pdf";
 
 const points = [
   "Custom Solutions",
@@ -183,12 +186,15 @@ export default function AboutUs() {
 
               {/* Buttons */}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <motion.button
+                <motion.div
   whileHover={{ y: -3, scale: 1.02 }}
   whileTap={{ scale: 0.98 }}
   transition={{ type: "spring", stiffness: 280, damping: 18 }}
-  className="group flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] bg-secondary text-dark sm:h-[63px] sm:w-[226px]"
 >
+  <Link
+    href="/company-profile"
+    className="group flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] bg-secondary text-dark sm:h-[63px] sm:w-[226px]"
+  >
   <span className="flex items-center gap-2">
     LEARN MORE
 
@@ -200,23 +206,29 @@ export default function AboutUs() {
       className="transition-transform duration-300 group-hover:translate-x-1"
     />
   </span>
-</motion.button>
+</Link>
+</motion.div>
 
-               <motion.button
+               <motion.div
   whileHover={{ y: -4, scale: 1.03 }}
   whileTap={{ scale: 0.97 }}
   transition={{ type: "spring", stiffness: 300, damping: 18 }}
-  className="group flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] sm:h-[63px] sm:w-[290px]"
-  style={{
-    backgroundColor: "var(--button-bg)",
-    color: "var(--button-text)",
-  }}
 >
+  <a
+    href={profilePdfUrl}
+    download="ABDEJ-Company-Profile.pdf"
+    className="group flex h-[56px] w-full items-center justify-center gap-2 rounded-[30px] sm:h-[63px] sm:w-[290px]"
+    style={{
+      backgroundColor: "var(--button-bg)",
+      color: "var(--button-text)",
+    }}
+  >
   <span className="flex items-center gap-2">
     DOWNLOAD PROFILE
     <Download className="h-5 w-5 text-current transition-transform duration-300 group-hover:translate-y-0.5" />
   </span>
-</motion.button>
+</a>
+</motion.div>
               </div>
             </div>
           </AnimatedSection>

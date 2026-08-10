@@ -48,7 +48,7 @@ const emailTemplate = ({
 
       .header {
         background: #000000;
-        color: #FFD700;
+        color: #FFC100;
         padding: 25px 20px;
         text-align: center;
       }
@@ -86,7 +86,7 @@ const emailTemplate = ({
         padding: 15px;
         border-radius: 10px;
         margin-top: 8px;
-        border-left: 4px solid #FFD700;
+        border-left: 4px solid #FFC100;
         white-space: pre-line;
       }
 
@@ -127,7 +127,7 @@ const emailTemplate = ({
     display:inline-block;
     margin-top:22px;
     padding:12px 18px;
-    background:#FFD700;
+    background:#FFC100;
     color:#000000 !important;
     font-weight:bold;
     text-decoration:none;
