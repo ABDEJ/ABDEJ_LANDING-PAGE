@@ -476,6 +476,14 @@ html[data-theme="light"] .footer-section .theme-logo-dark {
   display: none;
 }
 
+/* .abdej-logo-dark-border {
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  background: #000000;
+  padding: 4px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+} */
+
 /* ================= PORTFOLIO / PROJECTS SECTION ================= */
 
 html[data-theme="dark"] .portfolio-section {

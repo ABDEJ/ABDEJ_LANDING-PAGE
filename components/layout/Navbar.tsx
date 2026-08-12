@@ -53,7 +53,9 @@ export default function Navbar() {
     width={520}
     height={148}
     priority
-    className="h-auto max-h-12 w-full object-contain md:max-h-14"
+    className={`h-auto max-h-12 w-full object-contain md:max-h-14 ${
+      theme === "dark" ? "abdej-logo-dark-border" : ""
+    }`}
   />
 </Link>
         {/* Desktop Links */}

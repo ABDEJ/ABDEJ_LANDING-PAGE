@@ -49,8 +49,7 @@ await transporter.sendMail({
         <img
           src="${brandLogoUrl}"
           alt="Abdej Logo"
-          style="max-width:220px;height:auto;display:block;margin:0 auto 12px;"
-        />
+          style="max-width:220px;height:auto;display:block;margin:0 auto 12px;"/>
 
         <h2 style="color:#FFC100;margin:0;font-size:18px;letter-spacing:1px;">
           NEW NEWSLETTER SUBSCRIPTION
@@ -126,7 +125,7 @@ await transporter.sendMail({
         <img
           src="${brandLogoUrl}"
           alt="Abdej Logo"
-          style="max-width:240px;height:auto;display:block;margin:0 auto 16px;"
+          style="max-width:240px;height:auto;display:block;margin:0 auto 16px;border:1px solid #ffffff;border-radius:8px;background:#000000;padding:4px;"
         />
 
         <h1 style="color:#FFC100;margin:0;">
