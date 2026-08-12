@@ -57,6 +57,7 @@ const emailTemplate = ({
         width: 220px;
         max-width: 100%;
         margin-bottom: 10px;
+     
       }
 
       .header h2 {
@@ -193,3 +194,9 @@ export async function POST(req: Request) {
     );
   }
 }
+
+
+  //  border: 1px solid #ffffff;
+  //       border-radius: 8px;
+  //       background: #000000;
+  //       padding: 4px;
